@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1137</width>
-    <height>654</height>
+    <width>1121</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -913,7 +913,7 @@ Button */
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_new">
+                 <widget class="QPushButton" name="btn_page1">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -949,43 +949,7 @@ Button */
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="btn_save">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Segoe UI</family>
-                    <pointsize>10</pointsize>
-                    <italic>false</italic>
-                    <bold>false</bold>
-                   </font>
-                  </property>
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LayoutDirection::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">background-image: url(:/icons/images/icons/cil-save.png)</string>
-                  </property>
-                  <property name="text">
-                   <string>Save</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="btn_exit">
+                 <widget class="QPushButton" name="btn_page2">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -1014,6 +978,42 @@ Button */
                   </property>
                   <property name="styleSheet">
                    <string notr="true">background-image: url(:/icons/images/icons/cil-x.png);</string>
+                  </property>
+                  <property name="text">
+                   <string>Exit</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="btn_page3">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>45</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Segoe UI</family>
+                    <pointsize>10</pointsize>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LayoutDirection::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">background-image: url(:/icons/images/icons/cil-alarm.png);</string>
                   </property>
                   <property name="text">
                    <string>Exit</string>
@@ -1865,7 +1865,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>5</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -1875,17 +1875,76 @@ background-repeat: no-repeat;</string>
                       </property>
                      </widget>
                      <widget class="QWidget" name="page2">
+                      <widget class="QDoubleSpinBox" name="doubleSpinBox">
+                       <property name="geometry">
+                        <rect>
+                         <x>100</x>
+                         <y>100</y>
+                         <width>131</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                      </widget>
+                      <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>100</x>
+                         <y>160</y>
+                         <width>131</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                      </widget>
                       <widget class="QLabel" name="label_2">
                        <property name="geometry">
                         <rect>
-                         <x>80</x>
-                         <y>40</y>
-                         <width>91</width>
+                         <x>60</x>
+                         <y>50</y>
+                         <width>81</width>
                          <height>31</height>
                         </rect>
                        </property>
                        <property name="text">
-                        <string>page2</string>
+                        <string>设置滤波</string>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_5">
+                       <property name="geometry">
+                        <rect>
+                         <x>20</x>
+                         <y>110</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>高通滤波Hz</string>
+                       </property>
+                      </widget>
+                      <widget class="QLabel" name="label_6">
+                       <property name="geometry">
+                        <rect>
+                         <x>20</x>
+                         <y>170</y>
+                         <width>71</width>
+                         <height>21</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>低通滤波Hz</string>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="pushButton_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>50</x>
+                         <y>320</y>
+                         <width>121</width>
+                         <height>41</height>
+                        </rect>
+                       </property>
+                       <property name="text">
+                        <string>开始采集</string>
                        </property>
                       </widget>
                      </widget>
