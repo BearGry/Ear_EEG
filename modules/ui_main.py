@@ -16,19 +16,20 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplication, QCheckBox,
-    QComboBox, QCommandLinkButton, QFrame, QGridLayout,
-    QHBoxLayout, QHeaderView, QLabel, QLayout,
-    QLineEdit, QMainWindow, QPlainTextEdit, QPushButton,
-    QRadioButton, QScrollArea, QScrollBar, QSizePolicy,
-    QSlider, QSpacerItem, QStackedWidget, QTableWidget,
-    QTableWidgetItem, QTextEdit, QVBoxLayout, QWidget)
+    QComboBox, QCommandLinkButton, QDoubleSpinBox, QFrame,
+    QGridLayout, QHBoxLayout, QHeaderView, QLabel,
+    QLayout, QLineEdit, QMainWindow, QPlainTextEdit,
+    QPushButton, QRadioButton, QScrollArea, QScrollBar,
+    QSizePolicy, QSlider, QSpacerItem, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
+    QWidget)
 from . import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1137, 654)
+        MainWindow.resize(1121, 634)
         MainWindow.setMinimumSize(QSize(940, 560))
         self.styleSheet = QWidget(MainWindow)
         self.styleSheet.setObjectName(u"styleSheet")
@@ -1049,9 +1050,24 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.home)
         self.page2 = QWidget()
         self.page2.setObjectName(u"page2")
+        self.doubleSpinBox = QDoubleSpinBox(self.page2)
+        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
+        self.doubleSpinBox.setGeometry(QRect(100, 100, 131, 41))
+        self.doubleSpinBox_2 = QDoubleSpinBox(self.page2)
+        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
+        self.doubleSpinBox_2.setGeometry(QRect(100, 160, 131, 41))
         self.label_2 = QLabel(self.page2)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(80, 40, 91, 31))
+        self.label_2.setGeometry(QRect(60, 50, 81, 31))
+        self.label_5 = QLabel(self.page2)
+        self.label_5.setObjectName(u"label_5")
+        self.label_5.setGeometry(QRect(20, 110, 71, 21))
+        self.label_6 = QLabel(self.page2)
+        self.label_6.setObjectName(u"label_6")
+        self.label_6.setGeometry(QRect(20, 170, 71, 21))
+        self.pushButton_2 = QPushButton(self.page2)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setGeometry(QRect(50, 320, 121, 41))
         self.stackedWidget.addWidget(self.page2)
         self.page3 = QWidget()
         self.page3.setObjectName(u"page3")
@@ -1515,69 +1531,69 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_23.addItem(self.verticalSpacer_4)
 
-        self.tableWidget_2 = QTableWidget(self.verticalFrame)
-        if (self.tableWidget_2.columnCount() < 2):
-            self.tableWidget_2.setColumnCount(2)
+        self.table_ble_stats = QTableWidget(self.verticalFrame)
+        if (self.table_ble_stats.columnCount() < 2):
+            self.table_ble_stats.setColumnCount(2)
         __qtablewidgetitem24 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(0, __qtablewidgetitem24)
+        self.table_ble_stats.setHorizontalHeaderItem(0, __qtablewidgetitem24)
         __qtablewidgetitem25 = QTableWidgetItem()
-        self.tableWidget_2.setHorizontalHeaderItem(1, __qtablewidgetitem25)
-        if (self.tableWidget_2.rowCount() < 12):
-            self.tableWidget_2.setRowCount(12)
+        self.table_ble_stats.setHorizontalHeaderItem(1, __qtablewidgetitem25)
+        if (self.table_ble_stats.rowCount() < 12):
+            self.table_ble_stats.setRowCount(12)
         __qtablewidgetitem26 = QTableWidgetItem()
         __qtablewidgetitem26.setFont(font4);
-        self.tableWidget_2.setVerticalHeaderItem(0, __qtablewidgetitem26)
+        self.table_ble_stats.setVerticalHeaderItem(0, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(1, __qtablewidgetitem27)
+        self.table_ble_stats.setVerticalHeaderItem(1, __qtablewidgetitem27)
         __qtablewidgetitem28 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(2, __qtablewidgetitem28)
+        self.table_ble_stats.setVerticalHeaderItem(2, __qtablewidgetitem28)
         __qtablewidgetitem29 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(3, __qtablewidgetitem29)
+        self.table_ble_stats.setVerticalHeaderItem(3, __qtablewidgetitem29)
         __qtablewidgetitem30 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(4, __qtablewidgetitem30)
+        self.table_ble_stats.setVerticalHeaderItem(4, __qtablewidgetitem30)
         __qtablewidgetitem31 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(5, __qtablewidgetitem31)
+        self.table_ble_stats.setVerticalHeaderItem(5, __qtablewidgetitem31)
         __qtablewidgetitem32 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(6, __qtablewidgetitem32)
+        self.table_ble_stats.setVerticalHeaderItem(6, __qtablewidgetitem32)
         __qtablewidgetitem33 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(7, __qtablewidgetitem33)
+        self.table_ble_stats.setVerticalHeaderItem(7, __qtablewidgetitem33)
         __qtablewidgetitem34 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(8, __qtablewidgetitem34)
+        self.table_ble_stats.setVerticalHeaderItem(8, __qtablewidgetitem34)
         __qtablewidgetitem35 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(9, __qtablewidgetitem35)
+        self.table_ble_stats.setVerticalHeaderItem(9, __qtablewidgetitem35)
         __qtablewidgetitem36 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(10, __qtablewidgetitem36)
+        self.table_ble_stats.setVerticalHeaderItem(10, __qtablewidgetitem36)
         __qtablewidgetitem37 = QTableWidgetItem()
-        self.tableWidget_2.setVerticalHeaderItem(11, __qtablewidgetitem37)
+        self.table_ble_stats.setVerticalHeaderItem(11, __qtablewidgetitem37)
         __qtablewidgetitem38 = QTableWidgetItem()
-        self.tableWidget_2.setItem(0, 0, __qtablewidgetitem38)
+        self.table_ble_stats.setItem(0, 0, __qtablewidgetitem38)
         __qtablewidgetitem39 = QTableWidgetItem()
-        self.tableWidget_2.setItem(0, 1, __qtablewidgetitem39)
+        self.table_ble_stats.setItem(0, 1, __qtablewidgetitem39)
         __qtablewidgetitem40 = QTableWidgetItem()
-        self.tableWidget_2.setItem(1, 0, __qtablewidgetitem40)
+        self.table_ble_stats.setItem(1, 0, __qtablewidgetitem40)
         __qtablewidgetitem41 = QTableWidgetItem()
-        self.tableWidget_2.setItem(2, 0, __qtablewidgetitem41)
+        self.table_ble_stats.setItem(2, 0, __qtablewidgetitem41)
         __qtablewidgetitem42 = QTableWidgetItem()
-        self.tableWidget_2.setItem(3, 0, __qtablewidgetitem42)
+        self.table_ble_stats.setItem(3, 0, __qtablewidgetitem42)
         __qtablewidgetitem43 = QTableWidgetItem()
-        self.tableWidget_2.setItem(4, 0, __qtablewidgetitem43)
+        self.table_ble_stats.setItem(4, 0, __qtablewidgetitem43)
         __qtablewidgetitem44 = QTableWidgetItem()
-        self.tableWidget_2.setItem(5, 0, __qtablewidgetitem44)
+        self.table_ble_stats.setItem(5, 0, __qtablewidgetitem44)
         __qtablewidgetitem45 = QTableWidgetItem()
-        self.tableWidget_2.setItem(6, 0, __qtablewidgetitem45)
+        self.table_ble_stats.setItem(6, 0, __qtablewidgetitem45)
         __qtablewidgetitem46 = QTableWidgetItem()
-        self.tableWidget_2.setItem(7, 0, __qtablewidgetitem46)
+        self.table_ble_stats.setItem(7, 0, __qtablewidgetitem46)
         __qtablewidgetitem47 = QTableWidgetItem()
-        self.tableWidget_2.setItem(8, 0, __qtablewidgetitem47)
+        self.table_ble_stats.setItem(8, 0, __qtablewidgetitem47)
         __qtablewidgetitem48 = QTableWidgetItem()
-        self.tableWidget_2.setItem(9, 0, __qtablewidgetitem48)
+        self.table_ble_stats.setItem(9, 0, __qtablewidgetitem48)
         __qtablewidgetitem49 = QTableWidgetItem()
-        self.tableWidget_2.setItem(10, 0, __qtablewidgetitem49)
+        self.table_ble_stats.setItem(10, 0, __qtablewidgetitem49)
         __qtablewidgetitem50 = QTableWidgetItem()
-        self.tableWidget_2.setItem(11, 0, __qtablewidgetitem50)
-        self.tableWidget_2.setObjectName(u"tableWidget_2")
-        sizePolicy3.setHeightForWidth(self.tableWidget_2.sizePolicy().hasHeightForWidth())
-        self.tableWidget_2.setSizePolicy(sizePolicy3)
+        self.table_ble_stats.setItem(11, 0, __qtablewidgetitem50)
+        self.table_ble_stats.setObjectName(u"table_ble_stats")
+        sizePolicy3.setHeightForWidth(self.table_ble_stats.sizePolicy().hasHeightForWidth())
+        self.table_ble_stats.setSizePolicy(sizePolicy3)
         palette1 = QPalette()
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
@@ -1612,26 +1628,26 @@ class Ui_MainWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette1.setBrush(QPalette.ColorGroup.Disabled, QPalette.ColorRole.PlaceholderText, brush3)
 #endif
-        self.tableWidget_2.setPalette(palette1)
-        self.tableWidget_2.setFrameShape(QFrame.Shape.NoFrame)
-        self.tableWidget_2.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
-        self.tableWidget_2.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
-        self.tableWidget_2.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
-        self.tableWidget_2.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
-        self.tableWidget_2.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
-        self.tableWidget_2.setShowGrid(True)
-        self.tableWidget_2.setGridStyle(Qt.PenStyle.SolidLine)
-        self.tableWidget_2.setSortingEnabled(False)
-        self.tableWidget_2.horizontalHeader().setVisible(False)
-        self.tableWidget_2.horizontalHeader().setCascadingSectionResizes(True)
-        self.tableWidget_2.horizontalHeader().setDefaultSectionSize(200)
-        self.tableWidget_2.horizontalHeader().setStretchLastSection(True)
-        self.tableWidget_2.verticalHeader().setVisible(False)
-        self.tableWidget_2.verticalHeader().setCascadingSectionResizes(False)
-        self.tableWidget_2.verticalHeader().setHighlightSections(False)
-        self.tableWidget_2.verticalHeader().setStretchLastSection(True)
+        self.table_ble_stats.setPalette(palette1)
+        self.table_ble_stats.setFrameShape(QFrame.Shape.NoFrame)
+        self.table_ble_stats.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAlwaysOn)
+        self.table_ble_stats.setSizeAdjustPolicy(QAbstractScrollArea.SizeAdjustPolicy.AdjustToContents)
+        self.table_ble_stats.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+        self.table_ble_stats.setSelectionMode(QAbstractItemView.SelectionMode.SingleSelection)
+        self.table_ble_stats.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
+        self.table_ble_stats.setShowGrid(True)
+        self.table_ble_stats.setGridStyle(Qt.PenStyle.SolidLine)
+        self.table_ble_stats.setSortingEnabled(False)
+        self.table_ble_stats.horizontalHeader().setVisible(False)
+        self.table_ble_stats.horizontalHeader().setCascadingSectionResizes(True)
+        self.table_ble_stats.horizontalHeader().setDefaultSectionSize(200)
+        self.table_ble_stats.horizontalHeader().setStretchLastSection(True)
+        self.table_ble_stats.verticalHeader().setVisible(False)
+        self.table_ble_stats.verticalHeader().setCascadingSectionResizes(False)
+        self.table_ble_stats.verticalHeader().setHighlightSections(False)
+        self.table_ble_stats.verticalHeader().setStretchLastSection(True)
 
-        self.verticalLayout_23.addWidget(self.tableWidget_2)
+        self.verticalLayout_23.addWidget(self.table_ble_stats)
 
         self.verticalSpacer_5 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
@@ -1787,7 +1803,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1846,7 +1862,10 @@ class Ui_MainWindow(object):
         self.closeAppBtn.setToolTip(QCoreApplication.translate("MainWindow", u"Close", None))
 #endif // QT_CONFIG(tooltip)
         self.closeAppBtn.setText("")
-        self.label_2.setText(QCoreApplication.translate("MainWindow", u"page2", None))
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e\u6ee4\u6ce2", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u9ad8\u901a\u6ee4\u6ce2Hz", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u4f4e\u901a\u6ee4\u6ce2Hz", None))
+        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u91c7\u96c6", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"page3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
@@ -1916,69 +1935,69 @@ class Ui_MainWindow(object):
         self.tableWidget.setSortingEnabled(__sortingEnabled)
 
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u53ef\u8fde\u63a5\u8bbe\u5907", None))
-        self.btn_select_ble.setItemText(0, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3392", None))
-        self.btn_select_ble.setItemText(1, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3393", None))
-        self.btn_select_ble.setItemText(2, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3394", None))
+        self.btn_select_ble.setItemText(0, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3426", None))
+        self.btn_select_ble.setItemText(1, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3392", None))
+        self.btn_select_ble.setItemText(2, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3393", None))
 
         self.btn_connect_ble.setText(QCoreApplication.translate("MainWindow", u"\u8fde\u63a5\u8033\u673a", None))
-        ___qtablewidgetitem24 = self.tableWidget_2.horizontalHeaderItem(0)
+        ___qtablewidgetitem24 = self.table_ble_stats.horizontalHeaderItem(0)
         ___qtablewidgetitem24.setText(QCoreApplication.translate("MainWindow", u"0", None));
-        ___qtablewidgetitem25 = self.tableWidget_2.horizontalHeaderItem(1)
+        ___qtablewidgetitem25 = self.table_ble_stats.horizontalHeaderItem(1)
         ___qtablewidgetitem25.setText(QCoreApplication.translate("MainWindow", u"1", None));
-        ___qtablewidgetitem26 = self.tableWidget_2.verticalHeaderItem(0)
+        ___qtablewidgetitem26 = self.table_ble_stats.verticalHeaderItem(0)
         ___qtablewidgetitem26.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem27 = self.tableWidget_2.verticalHeaderItem(1)
+        ___qtablewidgetitem27 = self.table_ble_stats.verticalHeaderItem(1)
         ___qtablewidgetitem27.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem28 = self.tableWidget_2.verticalHeaderItem(2)
+        ___qtablewidgetitem28 = self.table_ble_stats.verticalHeaderItem(2)
         ___qtablewidgetitem28.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem29 = self.tableWidget_2.verticalHeaderItem(3)
+        ___qtablewidgetitem29 = self.table_ble_stats.verticalHeaderItem(3)
         ___qtablewidgetitem29.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem30 = self.tableWidget_2.verticalHeaderItem(4)
+        ___qtablewidgetitem30 = self.table_ble_stats.verticalHeaderItem(4)
         ___qtablewidgetitem30.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem31 = self.tableWidget_2.verticalHeaderItem(5)
+        ___qtablewidgetitem31 = self.table_ble_stats.verticalHeaderItem(5)
         ___qtablewidgetitem31.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem32 = self.tableWidget_2.verticalHeaderItem(6)
+        ___qtablewidgetitem32 = self.table_ble_stats.verticalHeaderItem(6)
         ___qtablewidgetitem32.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem33 = self.tableWidget_2.verticalHeaderItem(7)
+        ___qtablewidgetitem33 = self.table_ble_stats.verticalHeaderItem(7)
         ___qtablewidgetitem33.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem34 = self.tableWidget_2.verticalHeaderItem(8)
+        ___qtablewidgetitem34 = self.table_ble_stats.verticalHeaderItem(8)
         ___qtablewidgetitem34.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem35 = self.tableWidget_2.verticalHeaderItem(9)
+        ___qtablewidgetitem35 = self.table_ble_stats.verticalHeaderItem(9)
         ___qtablewidgetitem35.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem36 = self.tableWidget_2.verticalHeaderItem(10)
+        ___qtablewidgetitem36 = self.table_ble_stats.verticalHeaderItem(10)
         ___qtablewidgetitem36.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
-        ___qtablewidgetitem37 = self.tableWidget_2.verticalHeaderItem(11)
+        ___qtablewidgetitem37 = self.table_ble_stats.verticalHeaderItem(11)
         ___qtablewidgetitem37.setText(QCoreApplication.translate("MainWindow", u"New Row", None));
 
-        __sortingEnabled1 = self.tableWidget_2.isSortingEnabled()
-        self.tableWidget_2.setSortingEnabled(False)
-        ___qtablewidgetitem38 = self.tableWidget_2.item(0, 0)
+        __sortingEnabled1 = self.table_ble_stats.isSortingEnabled()
+        self.table_ble_stats.setSortingEnabled(False)
+        ___qtablewidgetitem38 = self.table_ble_stats.item(0, 0)
         ___qtablewidgetitem38.setText(QCoreApplication.translate("MainWindow", u"   \u5c5e\u6027", None));
-        ___qtablewidgetitem39 = self.tableWidget_2.item(0, 1)
+        ___qtablewidgetitem39 = self.table_ble_stats.item(0, 1)
         ___qtablewidgetitem39.setText(QCoreApplication.translate("MainWindow", u"   \u72b6\u6001", None));
-        ___qtablewidgetitem40 = self.tableWidget_2.item(1, 0)
+        ___qtablewidgetitem40 = self.table_ble_stats.item(1, 0)
         ___qtablewidgetitem40.setText(QCoreApplication.translate("MainWindow", u"\u6570\u636e\u957f\u5ea6", None));
-        ___qtablewidgetitem41 = self.tableWidget_2.item(2, 0)
+        ___qtablewidgetitem41 = self.table_ble_stats.item(2, 0)
         ___qtablewidgetitem41.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u8033\u4f69\u6234", None));
-        ___qtablewidgetitem42 = self.tableWidget_2.item(3, 0)
+        ___qtablewidgetitem42 = self.table_ble_stats.item(3, 0)
         ___qtablewidgetitem42.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u8033\u4f69\u6234", None));
-        ___qtablewidgetitem43 = self.tableWidget_2.item(4, 0)
+        ___qtablewidgetitem43 = self.table_ble_stats.item(4, 0)
         ___qtablewidgetitem43.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u8033\u7535\u91cf", None));
-        ___qtablewidgetitem44 = self.tableWidget_2.item(5, 0)
+        ___qtablewidgetitem44 = self.table_ble_stats.item(5, 0)
         ___qtablewidgetitem44.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u8033\u7535\u91cf", None));
-        ___qtablewidgetitem45 = self.tableWidget_2.item(6, 0)
+        ___qtablewidgetitem45 = self.table_ble_stats.item(6, 0)
         ___qtablewidgetitem45.setText(QCoreApplication.translate("MainWindow", u"\u786c\u4ef6\u7248\u672c\u53f7", None));
-        ___qtablewidgetitem46 = self.tableWidget_2.item(7, 0)
+        ___qtablewidgetitem46 = self.table_ble_stats.item(7, 0)
         ___qtablewidgetitem46.setText(QCoreApplication.translate("MainWindow", u"\u8f6f\u4ef6\u7248\u672c\u53f7", None));
-        ___qtablewidgetitem47 = self.tableWidget_2.item(8, 0)
+        ___qtablewidgetitem47 = self.table_ble_stats.item(8, 0)
         ___qtablewidgetitem47.setText(QCoreApplication.translate("MainWindow", u"\u5927\u5c0f\u7aef", None));
-        ___qtablewidgetitem48 = self.tableWidget_2.item(9, 0)
+        ___qtablewidgetitem48 = self.table_ble_stats.item(9, 0)
         ___qtablewidgetitem48.setText(QCoreApplication.translate("MainWindow", u"\u964d\u566a\u5f00\u5173", None));
-        ___qtablewidgetitem49 = self.tableWidget_2.item(10, 0)
+        ___qtablewidgetitem49 = self.table_ble_stats.item(10, 0)
         ___qtablewidgetitem49.setText(QCoreApplication.translate("MainWindow", u"\u89e6\u63a7\u5f00\u5173", None));
-        ___qtablewidgetitem50 = self.tableWidget_2.item(11, 0)
+        ___qtablewidgetitem50 = self.table_ble_stats.item(11, 0)
         ___qtablewidgetitem50.setText(QCoreApplication.translate("MainWindow", u"\u81ea\u52a8\u64ad\u653e\u505c\u6b62\u529f\u80fd", None));
-        self.tableWidget_2.setSortingEnabled(__sortingEnabled1)
+        self.table_ble_stats.setSortingEnabled(__sortingEnabled1)
 
         self.btn_message.setText(QCoreApplication.translate("MainWindow", u"Message", None))
         self.btn_print.setText(QCoreApplication.translate("MainWindow", u"Print", None))
