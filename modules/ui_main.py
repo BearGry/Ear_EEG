@@ -1050,24 +1050,158 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.home)
         self.page2 = QWidget()
         self.page2.setObjectName(u"page2")
-        self.doubleSpinBox = QDoubleSpinBox(self.page2)
-        self.doubleSpinBox.setObjectName(u"doubleSpinBox")
-        self.doubleSpinBox.setGeometry(QRect(100, 100, 131, 41))
-        self.doubleSpinBox_2 = QDoubleSpinBox(self.page2)
-        self.doubleSpinBox_2.setObjectName(u"doubleSpinBox_2")
-        self.doubleSpinBox_2.setGeometry(QRect(100, 160, 131, 41))
-        self.label_2 = QLabel(self.page2)
+        self.horizontalLayout_14 = QHBoxLayout(self.page2)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.page2_left_part = QFrame(self.page2)
+        self.page2_left_part.setObjectName(u"page2_left_part")
+        self.page2_left_part.setFrameShape(QFrame.Shape.StyledPanel)
+        self.page2_left_part.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_22 = QVBoxLayout(self.page2_left_part)
+        self.verticalLayout_22.setSpacing(12)
+        self.verticalLayout_22.setObjectName(u"verticalLayout_22")
+        self.verticalSpacer_9 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_9)
+
+        self.label_2 = QLabel(self.page2_left_part)
         self.label_2.setObjectName(u"label_2")
-        self.label_2.setGeometry(QRect(60, 50, 81, 31))
-        self.label_5 = QLabel(self.page2)
+        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Fixed)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
+        self.label_2.setSizePolicy(sizePolicy3)
+        self.label_2.setMinimumSize(QSize(0, 50))
+
+        self.verticalLayout_22.addWidget(self.label_2, 0, Qt.AlignmentFlag.AlignHCenter)
+
+        self.horizontalLayout_10 = QHBoxLayout()
+        self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
+        self.horizontalLayout_10.setContentsMargins(10, -1, -1, -1)
+        self.label_5 = QLabel(self.page2_left_part)
         self.label_5.setObjectName(u"label_5")
-        self.label_5.setGeometry(QRect(20, 110, 71, 21))
-        self.label_6 = QLabel(self.page2)
+
+        self.horizontalLayout_10.addWidget(self.label_5)
+
+        self.btn_hign_pass_set = QDoubleSpinBox(self.page2_left_part)
+        self.btn_hign_pass_set.setObjectName(u"btn_hign_pass_set")
+        self.btn_hign_pass_set.setMinimumSize(QSize(0, 30))
+
+        self.horizontalLayout_10.addWidget(self.btn_hign_pass_set)
+
+        self.horizontalLayout_10.setStretch(0, 1)
+        self.horizontalLayout_10.setStretch(1, 2)
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_10)
+
+        self.horizontalLayout_13 = QHBoxLayout()
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.horizontalLayout_13.setContentsMargins(10, -1, -1, -1)
+        self.label_6 = QLabel(self.page2_left_part)
         self.label_6.setObjectName(u"label_6")
-        self.label_6.setGeometry(QRect(20, 170, 71, 21))
-        self.pushButton_2 = QPushButton(self.page2)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setGeometry(QRect(50, 320, 121, 41))
+
+        self.horizontalLayout_13.addWidget(self.label_6)
+
+        self.btn_low_pass_set = QDoubleSpinBox(self.page2_left_part)
+        self.btn_low_pass_set.setObjectName(u"btn_low_pass_set")
+        self.btn_low_pass_set.setMinimumSize(QSize(32, 30))
+
+        self.horizontalLayout_13.addWidget(self.btn_low_pass_set)
+
+        self.horizontalLayout_13.setStretch(0, 1)
+        self.horizontalLayout_13.setStretch(1, 2)
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_13)
+
+        self.verticalSpacer_8 = QSpacerItem(20, 160, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_8)
+
+        self.horizontalLayout_17 = QHBoxLayout()
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.btn_get_message = QPushButton(self.page2_left_part)
+        self.btn_get_message.setObjectName(u"btn_get_message")
+        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.btn_get_message.sizePolicy().hasHeightForWidth())
+        self.btn_get_message.setSizePolicy(sizePolicy4)
+        self.btn_get_message.setMinimumSize(QSize(160, 40))
+
+        self.horizontalLayout_17.addWidget(self.btn_get_message)
+
+
+        self.verticalLayout_22.addLayout(self.horizontalLayout_17)
+
+        self.verticalSpacer_7 = QSpacerItem(20, 50, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Preferred)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_7)
+
+        self.verticalLayout_22.setStretch(0, 2)
+        self.verticalLayout_22.setStretch(1, 3)
+        self.verticalLayout_22.setStretch(2, 3)
+        self.verticalLayout_22.setStretch(3, 3)
+        self.verticalLayout_22.setStretch(4, 5)
+        self.verticalLayout_22.setStretch(5, 3)
+        self.verticalLayout_22.setStretch(6, 2)
+
+        self.horizontalLayout_14.addWidget(self.page2_left_part)
+
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_2)
+
+        self.verticalLayout_21 = QVBoxLayout()
+        self.verticalLayout_21.setObjectName(u"verticalLayout_21")
+        self.horizontalFrame = QFrame(self.page2)
+        self.horizontalFrame.setObjectName(u"horizontalFrame")
+        self.horizontalFrame.setFrameShape(QFrame.Shape.StyledPanel)
+        self.horizontalFrame.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalFrame.setLineWidth(1)
+        self.horizontalLayout_15 = QHBoxLayout(self.horizontalFrame)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.left_plot_window = QWidget(self.horizontalFrame)
+        self.left_plot_window.setObjectName(u"left_plot_window")
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.left_plot_window.sizePolicy().hasHeightForWidth())
+        self.left_plot_window.setSizePolicy(sizePolicy5)
+        font4 = QFont()
+        font4.setFamilies([u"Segoe UI"])
+        font4.setPointSize(10)
+        font4.setBold(False)
+        font4.setItalic(False)
+        font4.setUnderline(False)
+        self.left_plot_window.setFont(font4)
+
+        self.horizontalLayout_15.addWidget(self.left_plot_window)
+
+
+        self.verticalLayout_21.addWidget(self.horizontalFrame)
+
+        self.horizontalFrame_2 = QFrame(self.page2)
+        self.horizontalFrame_2.setObjectName(u"horizontalFrame_2")
+        self.horizontalFrame_2.setFrameShape(QFrame.Shape.StyledPanel)
+        self.horizontalFrame_2.setFrameShadow(QFrame.Shadow.Raised)
+        self.horizontalLayout_16 = QHBoxLayout(self.horizontalFrame_2)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.right_plot_window = QWidget(self.horizontalFrame_2)
+        self.right_plot_window.setObjectName(u"right_plot_window")
+        sizePolicy5.setHeightForWidth(self.right_plot_window.sizePolicy().hasHeightForWidth())
+        self.right_plot_window.setSizePolicy(sizePolicy5)
+
+        self.horizontalLayout_16.addWidget(self.right_plot_window)
+
+
+        self.verticalLayout_21.addWidget(self.horizontalFrame_2)
+
+        self.verticalLayout_21.setStretch(0, 1)
+        self.verticalLayout_21.setStretch(1, 1)
+
+        self.horizontalLayout_14.addLayout(self.verticalLayout_21)
+
+        self.horizontalLayout_14.setStretch(0, 3)
+        self.horizontalLayout_14.setStretch(2, 8)
         self.stackedWidget.addWidget(self.page2)
         self.page3 = QWidget()
         self.page3.setObjectName(u"page3")
@@ -1311,10 +1445,10 @@ class Ui_MainWindow(object):
         self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         if (self.tableWidget.rowCount() < 16):
             self.tableWidget.setRowCount(16)
-        font4 = QFont()
-        font4.setFamilies([u"Segoe UI"])
+        font5 = QFont()
+        font5.setFamilies([u"Segoe UI"])
         __qtablewidgetitem4 = QTableWidgetItem()
-        __qtablewidgetitem4.setFont(font4);
+        __qtablewidgetitem4.setFont(font5);
         self.tableWidget.setVerticalHeaderItem(0, __qtablewidgetitem4)
         __qtablewidgetitem5 = QTableWidgetItem()
         self.tableWidget.setVerticalHeaderItem(1, __qtablewidgetitem5)
@@ -1355,11 +1489,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem23 = QTableWidgetItem()
         self.tableWidget.setItem(0, 3, __qtablewidgetitem23)
         self.tableWidget.setObjectName(u"tableWidget")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy3)
+        sizePolicy5.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy5)
         palette = QPalette()
         brush = QBrush(QColor(221, 221, 221, 255))
         brush.setStyle(Qt.BrushStyle.SolidPattern)
@@ -1427,9 +1558,6 @@ class Ui_MainWindow(object):
         self.stackedWidget.addWidget(self.widgets)
         self.page1 = QWidget()
         self.page1.setObjectName(u"page1")
-        sizePolicy4 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy4.setHorizontalStretch(0)
-        sizePolicy4.setVerticalStretch(0)
         sizePolicy4.setHeightForWidth(self.page1.sizePolicy().hasHeightForWidth())
         self.page1.setSizePolicy(sizePolicy4)
         self.horizontalLayout_6 = QHBoxLayout(self.page1)
@@ -1452,11 +1580,11 @@ class Ui_MainWindow(object):
 
         self.label = QLabel(self.l_connect_ble)
         self.label.setObjectName(u"label")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy5)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy6.setHorizontalStretch(0)
+        sizePolicy6.setVerticalStretch(0)
+        sizePolicy6.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy6)
 
         self.verticalLayout_20.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -1541,7 +1669,7 @@ class Ui_MainWindow(object):
         if (self.table_ble_stats.rowCount() < 12):
             self.table_ble_stats.setRowCount(12)
         __qtablewidgetitem26 = QTableWidgetItem()
-        __qtablewidgetitem26.setFont(font4);
+        __qtablewidgetitem26.setFont(font5);
         self.table_ble_stats.setVerticalHeaderItem(0, __qtablewidgetitem26)
         __qtablewidgetitem27 = QTableWidgetItem()
         self.table_ble_stats.setVerticalHeaderItem(1, __qtablewidgetitem27)
@@ -1592,8 +1720,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem50 = QTableWidgetItem()
         self.table_ble_stats.setItem(11, 0, __qtablewidgetitem50)
         self.table_ble_stats.setObjectName(u"table_ble_stats")
-        sizePolicy3.setHeightForWidth(self.table_ble_stats.sizePolicy().hasHeightForWidth())
-        self.table_ble_stats.setSizePolicy(sizePolicy3)
+        sizePolicy5.setHeightForWidth(self.table_ble_stats.sizePolicy().hasHeightForWidth())
+        self.table_ble_stats.setSizePolicy(sizePolicy5)
         palette1 = QPalette()
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
@@ -1763,11 +1891,11 @@ class Ui_MainWindow(object):
         self.creditsLabel = QLabel(self.bottomBar)
         self.creditsLabel.setObjectName(u"creditsLabel")
         self.creditsLabel.setMaximumSize(QSize(16777215, 16))
-        font5 = QFont()
-        font5.setFamilies([u"Segoe UI"])
-        font5.setBold(False)
-        font5.setItalic(False)
-        self.creditsLabel.setFont(font5)
+        font6 = QFont()
+        font6.setFamilies([u"Segoe UI"])
+        font6.setBold(False)
+        font6.setItalic(False)
+        self.creditsLabel.setFont(font6)
         self.creditsLabel.setAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
 
         self.horizontalLayout_5.addWidget(self.creditsLabel)
@@ -1803,7 +1931,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -1865,7 +1993,7 @@ class Ui_MainWindow(object):
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e\u6ee4\u6ce2", None))
         self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u9ad8\u901a\u6ee4\u6ce2Hz", None))
         self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u4f4e\u901a\u6ee4\u6ce2Hz", None))
-        self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u91c7\u96c6", None))
+        self.btn_get_message.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u91c7\u96c6", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"page3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
