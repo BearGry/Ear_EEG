@@ -7,8 +7,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1121</width>
-    <height>634</height>
+    <width>1077</width>
+    <height>584</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -1875,7 +1875,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <string notr="true">background: transparent;</string>
                      </property>
                      <property name="currentIndex">
-                      <number>5</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2064,7 +2064,7 @@ background-repeat: no-repeat;</string>
                            </property>
                            <layout class="QHBoxLayout" name="horizontalLayout_15">
                             <item>
-                             <widget class="QWidget" name="left_plot_window" native="true">
+                             <widget class="PlotWidget" name="left_plot_window" native="true">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                                 <horstretch>0</horstretch>
@@ -2095,7 +2095,7 @@ background-repeat: no-repeat;</string>
                            </property>
                            <layout class="QHBoxLayout" name="horizontalLayout_16">
                             <item>
-                             <widget class="QWidget" name="right_plot_window" native="true">
+                             <widget class="PlotWidget" name="right_plot_window" native="true">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                                 <horstretch>0</horstretch>
@@ -2436,7 +2436,7 @@ background-repeat: no-repeat;</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>218</width>
+                                 <width>274</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -3976,6 +3976,14 @@ background-repeat: no-repeat;</string>
    </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>PlotWidget</class>
+   <extends>QWidget</extends>
+   <header>pyqtgraph</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="resources.qrc"/>
  </resources>

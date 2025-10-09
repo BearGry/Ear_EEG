@@ -1,11 +1,18 @@
 import asyncio
 import numpy as np
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
-from PySide6.QtCore import QThread
+from PySide6.QtCore import QThread, Signal, QObject
 
-from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread
+from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread, EEGPlotter
+
+
+class Signals(QObject):
+    left_plotter = Signal(list)  # 左耳数据绘图信号
+    right_plotter = Signal(list)  # 右耳数据绘图信号
+
 
 class Function:
+
     def __init__(self, ui) -> None:
         self.ui = ui
         self.ble = None  # BLE 设备客户端
@@ -16,7 +23,14 @@ class Function:
         self.left_data_index = 0  # 左耳数据索引
         self.right_data = np.zeros((0))  # 右耳数据存储
         self.right_data_index = 0  # 右耳数据索引
-    
+
+        self.signals = Signals()
+
+        self.left_data_plotter = EEGPlotter(self.ui.left_plot_window)  # 左耳绘图器
+        self.right_data_plotter = EEGPlotter(self.ui.right_plot_window)  # 右耳绘图器
+        self.signals.left_plotter.connect(self.left_data_plotter.update_plot)
+        self.signals.right_plotter.connect(self.right_data_plotter.update_plot)
+
     def connect_ble(self):
         '''
         连接 BLE 设备，没有连接上的话给出提示
@@ -111,10 +125,12 @@ class Function:
             self.left_data_index += data["sample_count"]
             if self.left_data_index % 5000 == 0:
                 print(f"左耳数据长度: {self.left_data_index}")
+            self.signals.left_plotter.emit(data["samples"])
+            
         elif data["ear_side"] == "right":
             self.right_data = np.concatenate((self.right_data, np.array(data["samples"])))
             self.right_data_index += data["sample_count"]
             if self.right_data_index % 5000 == 0:
                 print(f"右耳数据长度: {self.right_data_index}")
-
+            self.signals.right_plotter.emit(data["samples"])
 

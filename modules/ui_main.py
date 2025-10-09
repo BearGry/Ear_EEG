@@ -23,13 +23,15 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QSizePolicy, QSlider, QSpacerItem, QStackedWidget,
     QTableWidget, QTableWidgetItem, QTextEdit, QVBoxLayout,
     QWidget)
+
+from pyqtgraph import PlotWidget
 from . import resources_rc
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1121, 634)
+        MainWindow.resize(1077, 584)
         MainWindow.setMinimumSize(QSize(940, 560))
         font = QFont()
         font.setPointSize(8)
@@ -1170,7 +1172,7 @@ class Ui_MainWindow(object):
         self.horizontalFrame.setLineWidth(1)
         self.horizontalLayout_15 = QHBoxLayout(self.horizontalFrame)
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
-        self.left_plot_window = QWidget(self.horizontalFrame)
+        self.left_plot_window = PlotWidget(self.horizontalFrame)
         self.left_plot_window.setObjectName(u"left_plot_window")
         sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy5.setHorizontalStretch(0)
@@ -1196,7 +1198,7 @@ class Ui_MainWindow(object):
         self.horizontalFrame_2.setFrameShadow(QFrame.Shadow.Raised)
         self.horizontalLayout_16 = QHBoxLayout(self.horizontalFrame_2)
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
-        self.right_plot_window = QWidget(self.horizontalFrame_2)
+        self.right_plot_window = PlotWidget(self.horizontalFrame_2)
         self.right_plot_window.setObjectName(u"right_plot_window")
         sizePolicy5.setHeightForWidth(self.right_plot_window.sizePolicy().hasHeightForWidth())
         self.right_plot_window.setSizePolicy(sizePolicy5)
@@ -1367,7 +1369,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1942,7 +1944,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(5)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
