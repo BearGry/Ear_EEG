@@ -1,1 +1,1 @@
-from .ble.get_message import BluetoothDevice, BleConnectThread
+from .ble.get_message import BluetoothDevice, BleConnectThread, BleGetMessageThread
