@@ -1095,11 +1095,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_10.addWidget(self.label_5)
 
-        self.btn_hign_pass_set = QDoubleSpinBox(self.page2_left_part)
-        self.btn_hign_pass_set.setObjectName(u"btn_hign_pass_set")
-        self.btn_hign_pass_set.setMinimumSize(QSize(0, 30))
+        self.btn_lowcut_set = QDoubleSpinBox(self.page2_left_part)
+        self.btn_lowcut_set.setObjectName(u"btn_lowcut_set")
+        self.btn_lowcut_set.setMinimumSize(QSize(0, 30))
+        self.btn_lowcut_set.setValue(0.500000000000000)
 
-        self.horizontalLayout_10.addWidget(self.btn_hign_pass_set)
+        self.horizontalLayout_10.addWidget(self.btn_lowcut_set)
 
         self.horizontalLayout_10.setStretch(0, 1)
         self.horizontalLayout_10.setStretch(1, 2)
@@ -1114,11 +1115,12 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_13.addWidget(self.label_6)
 
-        self.btn_low_pass_set = QDoubleSpinBox(self.page2_left_part)
-        self.btn_low_pass_set.setObjectName(u"btn_low_pass_set")
-        self.btn_low_pass_set.setMinimumSize(QSize(32, 30))
+        self.btn_highcut_set = QDoubleSpinBox(self.page2_left_part)
+        self.btn_highcut_set.setObjectName(u"btn_highcut_set")
+        self.btn_highcut_set.setMinimumSize(QSize(32, 30))
+        self.btn_highcut_set.setValue(40.000000000000000)
 
-        self.horizontalLayout_13.addWidget(self.btn_low_pass_set)
+        self.horizontalLayout_13.addWidget(self.btn_highcut_set)
 
         self.horizontalLayout_13.setStretch(0, 1)
         self.horizontalLayout_13.setStretch(1, 2)
@@ -1369,7 +1371,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2004,8 +2006,8 @@ class Ui_MainWindow(object):
 #endif // QT_CONFIG(tooltip)
         self.closeAppBtn.setText("")
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u8bbe\u7f6e\u6ee4\u6ce2", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u9ad8\u901a\u6ee4\u6ce2Hz", None))
-        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u4f4e\u901a\u6ee4\u6ce2Hz", None))
+        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u9ad8\u901a\u622a\u6b62Hz", None))
+        self.label_6.setText(QCoreApplication.translate("MainWindow", u"\u4f4e\u901a\u622a\u6b62Hz", None))
         self.btn_get_message.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u91c7\u96c6", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"page3", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))

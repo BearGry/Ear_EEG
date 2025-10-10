@@ -16,6 +16,8 @@ class Function:
     def __init__(self, ui) -> None:
         self.ui = ui
         self.ble = None  # BLE 设备客户端
+        self.signals = Signals()
+
         self.connect_thread = None  # 连接线程
         self.get_message_thread = None  # 获取数据线程
 
@@ -24,12 +26,9 @@ class Function:
         self.right_data = np.zeros((0))  # 右耳数据存储
         self.right_data_index = 0  # 右耳数据索引
 
-        self.signals = Signals()
 
-        self.left_data_plotter = EEGPlotter(self.ui.left_plot_window)  # 左耳绘图器
-        self.right_data_plotter = EEGPlotter(self.ui.right_plot_window)  # 右耳绘图器
-        self.signals.left_plotter.connect(self.left_data_plotter.update_plot)
-        self.signals.right_plotter.connect(self.right_data_plotter.update_plot)
+        self.left_data_plotter = None  # 左耳绘图器
+        self.right_data_plotter = None  # 右耳绘图器
 
     def connect_ble(self):
         '''
@@ -99,8 +98,15 @@ class Function:
     def get_message(self):
         '''
         获取左右耳的 EEG 数据，并分别存储到left_data 和 right_data 变量中，
-        终端打印出每秒的包计数
+        终端打印出每秒的包计数, 并且把数据传给绘图器进行实时绘图
         '''
+        lowcut = self.ui.btn_lowcut_set.value()
+        highcut = self.ui.btn_highcut_set.value()
+        self.left_data_plotter = EEGPlotter(self.ui.left_plot_window, lowcut=lowcut, highcut=highcut)  # 左耳绘图器
+        self.right_data_plotter = EEGPlotter(self.ui.right_plot_window, lowcut=lowcut, highcut=highcut, side="right")  # 右耳绘图器
+        self.signals.left_plotter.connect(self.left_data_plotter.update_plot)
+        self.signals.right_plotter.connect(self.right_data_plotter.update_plot)
+
         self.get_message_thread = BleGetMessageThread(self.ble)
         self.ble.data_received_signal.connect(self._handle_data_received)
         self.get_message_thread.start()
