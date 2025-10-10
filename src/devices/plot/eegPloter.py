@@ -63,7 +63,7 @@ class EEGPlotter:
             self.plot_widget.removeItem(self.refresh_line)  
         self.refresh_line = self.plot_widget.addLine(
             x=0, 
-            pen=pg.mkPen(color='r', width=2, style=QtCore.Qt.DashLine)
+            pen=pg.mkPen(color='white', width=2)
         )
         
         # 设置坐标轴范围
@@ -99,14 +99,14 @@ class EEGPlotter:
         self.curve.setData(self.time_buffer, self.data_buffer)
         
         # 自动调整Y轴范围以适应数据
-        if len(self.data_buffer) > 0:
-            data_range = np.max(self.data_buffer) - np.min(self.data_buffer)
-            if data_range > 10:
-                margin = data_range * 0.1
-                self.plot_widget.setYRange(
-                    np.min(self.data_buffer) - margin, 
-                    np.max(self.data_buffer) + margin
-                )
+        # if len(self.data_buffer) > 0:
+        #     data_range = np.max(self.data_buffer) - np.min(self.data_buffer)
+        #     if data_range > 10:
+        #         margin = data_range * 0.1
+        #         self.plot_widget.setYRange(
+        #             np.min(self.data_buffer) - margin, 
+        #             np.max(self.data_buffer) + margin
+        #         )
 
 
 

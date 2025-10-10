@@ -35,6 +35,8 @@ class Function:
         连接 BLE 设备，没有连接上的话给出提示
         连上的话给出设备信息,并使连接按钮不可再点击
         '''
+        self.ui.btn_connect_ble.setEnabled(False)
+        self.ui.btn_connect_ble.setText("连接中...")
         device_name = self.ui.btn_select_ble.currentText()
         self.ble = BluetoothDevice(device_name)
         self.connect_thread = BleConnectThread(self.ble)
@@ -46,6 +48,8 @@ class Function:
         if result != "ok":
             # 连接失败的弹窗
             QMessageBox.warning(self.ui.page1, "连接失败", result)
+            self.ui.btn_connect_ble.setEnabled(True)
+            self.ui.btn_connect_ble.setText("连接设备")
         else:
             print("连接成功，你应该能够看到设备信息")
             # 连接按钮设置为不能再点击
@@ -110,6 +114,8 @@ class Function:
         self.get_message_thread = BleGetMessageThread(self.ble)
         self.ble.data_received_signal.connect(self._handle_data_received)
         self.get_message_thread.start()
+        self.ui.btn_get_message.setEnabled(False)
+        self.ui.btn_get_message.setText("数据接收中...")
 
 
     def _handle_data_received(self, data):
