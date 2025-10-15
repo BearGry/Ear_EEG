@@ -122,6 +122,9 @@ class MainWindow(QMainWindow):
         # init page2 slots
         self.ui.btn_get_message.clicked.connect(self.func.get_message)
 
+        # init page3 slots
+        self.ui.btn_start_exp.clicked.connect(self.func.start_experiment)
+
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
     # ///////////////////////////////////////////////////////////////

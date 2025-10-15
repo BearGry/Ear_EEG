@@ -30,6 +30,15 @@ class Function:
         self.left_data_plotter = None  # 左耳绘图器
         self.right_data_plotter = None  # 右耳绘图器
 
+
+    def start_experiment(self):
+        '''
+        开始实验按钮点击事件
+        
+        '''
+
+
+
     def connect_ble(self):
         '''
         连接 BLE 设备，没有连接上的话给出提示

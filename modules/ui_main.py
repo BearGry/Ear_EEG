@@ -21,8 +21,8 @@ from PySide6.QtWidgets import (QAbstractItemView, QAbstractScrollArea, QApplicat
     QLayout, QLineEdit, QMainWindow, QPlainTextEdit,
     QProgressBar, QPushButton, QRadioButton, QScrollArea,
     QScrollBar, QSizePolicy, QSlider, QSpacerItem,
-    QStackedWidget, QTableWidget, QTableWidgetItem, QTextEdit,
-    QVBoxLayout, QWidget)
+    QSpinBox, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QTextEdit, QVBoxLayout, QWidget)
 
 from pyqtgraph import PlotWidget
 from . import resources_rc
@@ -937,7 +937,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
         self.titleRightInfo = QLabel(self.leftBox)
         self.titleRightInfo.setObjectName(u"titleRightInfo")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Expanding)
+        sizePolicy2 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
         sizePolicy2.setHorizontalStretch(0)
         sizePolicy2.setVerticalStretch(0)
         sizePolicy2.setHeightForWidth(self.titleRightInfo.sizePolicy().hasHeightForWidth())
@@ -1055,6 +1055,7 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.pagesContainer)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setStyleSheet(u"background: transparent;")
+        self.stackedWidget.setFrameShadow(QFrame.Shadow.Raised)
         self.home = QWidget()
         self.home.setObjectName(u"home")
         self.home.setStyleSheet(u"background-image: url(:/images/images/images/PyDracula_vertical.png);\n"
@@ -1176,11 +1177,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
         self.left_plot_window = PlotWidget(self.horizontalFrame)
         self.left_plot_window.setObjectName(u"left_plot_window")
-        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy5.setHorizontalStretch(0)
-        sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.left_plot_window.sizePolicy().hasHeightForWidth())
-        self.left_plot_window.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.left_plot_window.sizePolicy().hasHeightForWidth())
+        self.left_plot_window.setSizePolicy(sizePolicy2)
         font6 = QFont()
         font6.setFamilies([u"Segoe UI"])
         font6.setPointSize(14)
@@ -1202,8 +1200,8 @@ class Ui_MainWindow(object):
         self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
         self.right_plot_window = PlotWidget(self.horizontalFrame_2)
         self.right_plot_window.setObjectName(u"right_plot_window")
-        sizePolicy5.setHeightForWidth(self.right_plot_window.sizePolicy().hasHeightForWidth())
-        self.right_plot_window.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.right_plot_window.sizePolicy().hasHeightForWidth())
+        self.right_plot_window.setSizePolicy(sizePolicy2)
 
         self.horizontalLayout_16.addWidget(self.right_plot_window)
 
@@ -1222,19 +1220,29 @@ class Ui_MainWindow(object):
         self.page3.setObjectName(u"page3")
         self.horizontalLayout_22 = QHBoxLayout(self.page3)
         self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
-        self.verticalLayout_24 = QVBoxLayout()
+        self.page3_left_bar = QFrame(self.page3)
+        self.page3_left_bar.setObjectName(u"page3_left_bar")
+        self.page3_left_bar.setFrameShape(QFrame.Shape.StyledPanel)
+        self.page3_left_bar.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_24 = QVBoxLayout(self.page3_left_bar)
         self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalLayout_24.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
         self.horizontalLayout_18 = QHBoxLayout()
         self.horizontalLayout_18.setSpacing(6)
         self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
-        self.label_10 = QLabel(self.page3)
+        self.label_10 = QLabel(self.page3_left_bar)
         self.label_10.setObjectName(u"label_10")
 
         self.horizontalLayout_18.addWidget(self.label_10)
 
-        self.progressBar = QProgressBar(self.page3)
+        self.progressBar = QProgressBar(self.page3_left_bar)
         self.progressBar.setObjectName(u"progressBar")
-        self.progressBar.setMinimumSize(QSize(230, 0))
+        sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.progressBar.sizePolicy().hasHeightForWidth())
+        self.progressBar.setSizePolicy(sizePolicy5)
+        self.progressBar.setMinimumSize(QSize(255, 0))
         self.progressBar.setMaximumSize(QSize(16777215, 16777215))
         self.progressBar.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
         self.progressBar.setValue(0)
@@ -1246,13 +1254,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_19 = QHBoxLayout()
         self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
-        self.label_7 = QLabel(self.page3)
+        self.label_7 = QLabel(self.page3_left_bar)
         self.label_7.setObjectName(u"label_7")
 
         self.horizontalLayout_19.addWidget(self.label_7)
 
-        self.progressBar_3 = QProgressBar(self.page3)
+        self.progressBar_3 = QProgressBar(self.page3_left_bar)
         self.progressBar_3.setObjectName(u"progressBar_3")
+        sizePolicy5.setHeightForWidth(self.progressBar_3.sizePolicy().hasHeightForWidth())
+        self.progressBar_3.setSizePolicy(sizePolicy5)
+        self.progressBar_3.setMinimumSize(QSize(255, 0))
         self.progressBar_3.setValue(0)
 
         self.horizontalLayout_19.addWidget(self.progressBar_3)
@@ -1262,13 +1273,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_20 = QHBoxLayout()
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.label_8 = QLabel(self.page3)
+        self.label_8 = QLabel(self.page3_left_bar)
         self.label_8.setObjectName(u"label_8")
 
         self.horizontalLayout_20.addWidget(self.label_8)
 
-        self.progressBar_4 = QProgressBar(self.page3)
+        self.progressBar_4 = QProgressBar(self.page3_left_bar)
         self.progressBar_4.setObjectName(u"progressBar_4")
+        sizePolicy5.setHeightForWidth(self.progressBar_4.sizePolicy().hasHeightForWidth())
+        self.progressBar_4.setSizePolicy(sizePolicy5)
+        self.progressBar_4.setMinimumSize(QSize(255, 0))
         self.progressBar_4.setValue(0)
 
         self.horizontalLayout_20.addWidget(self.progressBar_4)
@@ -1278,13 +1292,16 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21 = QHBoxLayout()
         self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
-        self.label_9 = QLabel(self.page3)
+        self.label_9 = QLabel(self.page3_left_bar)
         self.label_9.setObjectName(u"label_9")
 
         self.horizontalLayout_21.addWidget(self.label_9)
 
-        self.progressBar_5 = QProgressBar(self.page3)
+        self.progressBar_5 = QProgressBar(self.page3_left_bar)
         self.progressBar_5.setObjectName(u"progressBar_5")
+        sizePolicy5.setHeightForWidth(self.progressBar_5.sizePolicy().hasHeightForWidth())
+        self.progressBar_5.setSizePolicy(sizePolicy5)
+        self.progressBar_5.setMinimumSize(QSize(255, 0))
         self.progressBar_5.setValue(0)
 
         self.horizontalLayout_21.addWidget(self.progressBar_5)
@@ -1292,7 +1309,7 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_21)
 
-        self.pushButton_3 = QPushButton(self.page3)
+        self.pushButton_3 = QPushButton(self.page3_left_bar)
         self.pushButton_3.setObjectName(u"pushButton_3")
         sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
         sizePolicy6.setHorizontalStretch(0)
@@ -1309,54 +1326,98 @@ class Ui_MainWindow(object):
         self.verticalLayout_24.setStretch(3, 3)
         self.verticalLayout_24.setStretch(4, 1)
 
-        self.horizontalLayout_22.addLayout(self.verticalLayout_24)
+        self.horizontalLayout_22.addWidget(self.page3_left_bar)
 
-        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_22.addItem(self.horizontalSpacer_3)
 
-        self.verticalLayout_25 = QVBoxLayout()
+        self.page3_right_bar = QFrame(self.page3)
+        self.page3_right_bar.setObjectName(u"page3_right_bar")
+        self.page3_right_bar.setFrameShape(QFrame.Shape.StyledPanel)
+        self.page3_right_bar.setFrameShadow(QFrame.Shadow.Raised)
+        self.verticalLayout_25 = QVBoxLayout(self.page3_right_bar)
         self.verticalLayout_25.setSpacing(6)
         self.verticalLayout_25.setObjectName(u"verticalLayout_25")
-        self.label_3 = QLabel(self.page3)
-        self.label_3.setObjectName(u"label_3")
-        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
-        sizePolicy7.setHorizontalStretch(0)
-        sizePolicy7.setVerticalStretch(0)
-        sizePolicy7.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
-        self.label_3.setSizePolicy(sizePolicy7)
+        self.verticalLayout_25.setSizeConstraint(QLayout.SizeConstraint.SetMinimumSize)
+        self.label_exp_window = QLabel(self.page3_right_bar)
+        self.label_exp_window.setObjectName(u"label_exp_window")
+        sizePolicy1.setHeightForWidth(self.label_exp_window.sizePolicy().hasHeightForWidth())
+        self.label_exp_window.setSizePolicy(sizePolicy1)
+        self.label_exp_window.setMinimumSize(QSize(0, 0))
         font7 = QFont()
         font7.setFamilies([u"\u9ed1\u4f53"])
         font7.setPointSize(72)
         font7.setBold(False)
         font7.setItalic(False)
-        self.label_3.setFont(font7)
-        self.label_3.setStyleSheet(u"font: 72pt \"\u9ed1\u4f53\";\n"
-"")
-        self.label_3.setFrameShape(QFrame.Shape.NoFrame)
+        self.label_exp_window.setFont(font7)
+        self.label_exp_window.setStyleSheet(u"font: 72pt \"\u9ed1\u4f53\";\n"
+"background-color: rgb(8, 8, 8)")
+        self.label_exp_window.setFrameShape(QFrame.Shape.StyledPanel)
+        self.label_exp_window.setFrameShadow(QFrame.Shadow.Raised)
+        self.label_exp_window.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        self.verticalLayout_25.addWidget(self.label_3, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_25.addWidget(self.label_exp_window)
 
-        self.btn_start_exp = QPushButton(self.page3)
+        self.horizontalLayout_23 = QHBoxLayout()
+        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.horizontalLayout_23.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.horizontalSpacer_4 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_23.addItem(self.horizontalSpacer_4)
+
+        self.label_11 = QLabel(self.page3_right_bar)
+        self.label_11.setObjectName(u"label_11")
+        sizePolicy7 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
+        sizePolicy7.setHorizontalStretch(0)
+        sizePolicy7.setVerticalStretch(0)
+        sizePolicy7.setHeightForWidth(self.label_11.sizePolicy().hasHeightForWidth())
+        self.label_11.setSizePolicy(sizePolicy7)
+
+        self.horizontalLayout_23.addWidget(self.label_11)
+
+        self.btn_exp_cnt = QSpinBox(self.page3_right_bar)
+        self.btn_exp_cnt.setObjectName(u"btn_exp_cnt")
+        sizePolicy5.setHeightForWidth(self.btn_exp_cnt.sizePolicy().hasHeightForWidth())
+        self.btn_exp_cnt.setSizePolicy(sizePolicy5)
+        self.btn_exp_cnt.setMaximumSize(QSize(140, 16777215))
+        self.btn_exp_cnt.setValue(10)
+
+        self.horizontalLayout_23.addWidget(self.btn_exp_cnt)
+
+        self.horizontalSpacer_5 = QSpacerItem(30, 20, QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_23.addItem(self.horizontalSpacer_5)
+
+        self.btn_start_exp = QPushButton(self.page3_right_bar)
         self.btn_start_exp.setObjectName(u"btn_start_exp")
-        sizePolicy6.setHeightForWidth(self.btn_start_exp.sizePolicy().hasHeightForWidth())
-        self.btn_start_exp.setSizePolicy(sizePolicy6)
+        sizePolicy5.setHeightForWidth(self.btn_start_exp.sizePolicy().hasHeightForWidth())
+        self.btn_start_exp.setSizePolicy(sizePolicy5)
         self.btn_start_exp.setMinimumSize(QSize(165, 0))
+        self.btn_start_exp.setMaximumSize(QSize(190, 16777215))
 
-        self.verticalLayout_25.addWidget(self.btn_start_exp, 0, Qt.AlignmentFlag.AlignHCenter|Qt.AlignmentFlag.AlignTop)
+        self.horizontalLayout_23.addWidget(self.btn_start_exp)
+
+        self.horizontalSpacer_6 = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_23.addItem(self.horizontalSpacer_6)
+
+        self.horizontalLayout_23.setStretch(1, 1)
+        self.horizontalLayout_23.setStretch(2, 1)
+        self.horizontalLayout_23.setStretch(4, 3)
+
+        self.verticalLayout_25.addLayout(self.horizontalLayout_23)
 
         self.verticalSpacer_6 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
         self.verticalLayout_25.addItem(self.verticalSpacer_6)
 
-        self.verticalLayout_25.setStretch(0, 11)
+        self.verticalLayout_25.setStretch(0, 8)
         self.verticalLayout_25.setStretch(1, 1)
         self.verticalLayout_25.setStretch(2, 1)
 
-        self.horizontalLayout_22.addLayout(self.verticalLayout_25)
+        self.horizontalLayout_22.addWidget(self.page3_right_bar)
 
-        self.horizontalLayout_22.setStretch(0, 3)
-        self.horizontalLayout_22.setStretch(2, 8)
         self.stackedWidget.addWidget(self.page3)
         self.page4 = QWidget()
         self.page4.setObjectName(u"page4")
@@ -1638,8 +1699,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem23 = QTableWidgetItem()
         self.tableWidget.setItem(0, 3, __qtablewidgetitem23)
         self.tableWidget.setObjectName(u"tableWidget")
-        sizePolicy5.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
-        self.tableWidget.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
+        self.tableWidget.setSizePolicy(sizePolicy2)
         palette = QPalette()
         brush = QBrush(QColor(221, 221, 221, 255))
         brush.setStyle(Qt.BrushStyle.SolidPattern)
@@ -1729,8 +1790,11 @@ class Ui_MainWindow(object):
 
         self.label = QLabel(self.l_connect_ble)
         self.label.setObjectName(u"label")
-        sizePolicy7.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy7)
+        sizePolicy8 = QSizePolicy(QSizePolicy.Policy.Preferred, QSizePolicy.Policy.Preferred)
+        sizePolicy8.setHorizontalStretch(0)
+        sizePolicy8.setVerticalStretch(0)
+        sizePolicy8.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy8)
 
         self.verticalLayout_20.addWidget(self.label, 0, Qt.AlignmentFlag.AlignHCenter)
 
@@ -1866,8 +1930,8 @@ class Ui_MainWindow(object):
         __qtablewidgetitem50 = QTableWidgetItem()
         self.table_ble_stats.setItem(11, 0, __qtablewidgetitem50)
         self.table_ble_stats.setObjectName(u"table_ble_stats")
-        sizePolicy5.setHeightForWidth(self.table_ble_stats.sizePolicy().hasHeightForWidth())
-        self.table_ble_stats.setSizePolicy(sizePolicy5)
+        sizePolicy2.setHeightForWidth(self.table_ble_stats.sizePolicy().hasHeightForWidth())
+        self.table_ble_stats.setSizePolicy(sizePolicy2)
         palette1 = QPalette()
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.WindowText, brush)
         palette1.setBrush(QPalette.ColorGroup.Active, QPalette.ColorRole.Button, brush1)
@@ -2145,7 +2209,8 @@ class Ui_MainWindow(object):
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u770b", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u770b", None))
         self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u6d4b\u8bd5", None))
-        self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u4f11\u606f", None))
+        self.label_exp_window.setText(QCoreApplication.translate("MainWindow", u"\u4f11\u606f", None))
+        self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u5b9e\u9a8c\u8f6e\u6b21", None))
         self.btn_start_exp.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u5b9e\u9a8c", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))

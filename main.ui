@@ -1574,7 +1574,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 <item>
                  <widget class="QLabel" name="titleRightInfo">
                   <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
@@ -1874,6 +1874,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      <property name="styleSheet">
                       <string notr="true">background: transparent;</string>
                      </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Shadow::Raised</enum>
+                     </property>
                      <property name="currentIndex">
                       <number>2</number>
                      </property>
@@ -2118,119 +2121,172 @@ background-repeat: no-repeat;</string>
                       </layout>
                      </widget>
                      <widget class="QWidget" name="page3">
-                      <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="3,0,8">
+                      <layout class="QHBoxLayout" name="horizontalLayout_22" stretch="0,0,0">
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_24" stretch="3,3,3,3,1">
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_18">
-                           <property name="spacing">
-                            <number>6</number>
-                           </property>
-                           <item>
-                            <widget class="QLabel" name="label_10">
-                             <property name="text">
-                              <string>闭眼</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QProgressBar" name="progressBar">
-                             <property name="minimumSize">
-                              <size>
-                               <width>230</width>
-                               <height>0</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>16777215</width>
-                               <height>16777215</height>
-                              </size>
-                             </property>
-                             <property name="layoutDirection">
-                              <enum>Qt::LayoutDirection::LeftToRight</enum>
-                             </property>
-                             <property name="value">
-                              <number>0</number>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_19">
-                           <item>
-                            <widget class="QLabel" name="label_7">
-                             <property name="text">
-                              <string>咬牙</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QProgressBar" name="progressBar_3">
-                             <property name="value">
-                              <number>0</number>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_20">
-                           <item>
-                            <widget class="QLabel" name="label_8">
-                             <property name="text">
-                              <string>左看</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QProgressBar" name="progressBar_4">
-                             <property name="value">
-                              <number>0</number>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_21">
-                           <item>
-                            <widget class="QLabel" name="label_9">
-                             <property name="text">
-                              <string>右看</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QProgressBar" name="progressBar_5">
-                             <property name="value">
-                              <number>0</number>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                          <widget class="QPushButton" name="pushButton_3">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>165</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="text">
-                            <string>测试</string>
-                           </property>
-                          </widget>
-                         </item>
-                        </layout>
+                        <widget class="QFrame" name="page3_left_bar">
+                         <property name="frameShape">
+                          <enum>QFrame::Shape::StyledPanel</enum>
+                         </property>
+                         <property name="frameShadow">
+                          <enum>QFrame::Shadow::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_24" stretch="3,3,3,3,1">
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                          </property>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_18">
+                            <property name="spacing">
+                             <number>6</number>
+                            </property>
+                            <item>
+                             <widget class="QLabel" name="label_10">
+                              <property name="text">
+                               <string>闭眼</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QProgressBar" name="progressBar">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>255</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="layoutDirection">
+                               <enum>Qt::LayoutDirection::LeftToRight</enum>
+                              </property>
+                              <property name="value">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_19">
+                            <item>
+                             <widget class="QLabel" name="label_7">
+                              <property name="text">
+                               <string>咬牙</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QProgressBar" name="progressBar_3">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>255</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="value">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_20">
+                            <item>
+                             <widget class="QLabel" name="label_8">
+                              <property name="text">
+                               <string>左看</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QProgressBar" name="progressBar_4">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>255</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="value">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_21">
+                            <item>
+                             <widget class="QLabel" name="label_9">
+                              <property name="text">
+                               <string>右看</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QProgressBar" name="progressBar_5">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>255</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="value">
+                               <number>0</number>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </item>
+                          <item alignment="Qt::AlignmentFlag::AlignHCenter">
+                           <widget class="QPushButton" name="pushButton_3">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>165</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string>测试</string>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
                        </item>
                        <item>
                         <spacer name="horizontalSpacer_3">
@@ -2238,7 +2294,7 @@ background-repeat: no-repeat;</string>
                           <enum>Qt::Orientation::Horizontal</enum>
                          </property>
                          <property name="sizeType">
-                          <enum>QSizePolicy::Policy::Expanding</enum>
+                          <enum>QSizePolicy::Policy::Fixed</enum>
                          </property>
                          <property name="sizeHint" stdset="0">
                           <size>
@@ -2249,71 +2305,181 @@ background-repeat: no-repeat;</string>
                         </spacer>
                        </item>
                        <item>
-                        <layout class="QVBoxLayout" name="verticalLayout_25" stretch="11,1,1">
-                         <property name="spacing">
-                          <number>6</number>
+                        <widget class="QFrame" name="page3_right_bar">
+                         <property name="frameShape">
+                          <enum>QFrame::Shape::StyledPanel</enum>
                          </property>
-                         <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                          <widget class="QLabel" name="label_3">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="font">
-                            <font>
-                             <family>黑体</family>
-                             <pointsize>72</pointsize>
-                             <italic>false</italic>
-                             <bold>false</bold>
-                            </font>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">font: 72pt &quot;黑体&quot;;
-</string>
-                           </property>
-                           <property name="frameShape">
-                            <enum>QFrame::Shape::NoFrame</enum>
-                           </property>
-                           <property name="text">
-                            <string>休息</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item alignment="Qt::AlignmentFlag::AlignHCenter|Qt::AlignmentFlag::AlignTop">
-                          <widget class="QPushButton" name="btn_start_exp">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>165</width>
-                             <height>0</height>
-                            </size>
-                           </property>
-                           <property name="text">
-                            <string>开始实验</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <spacer name="verticalSpacer_6">
-                           <property name="orientation">
-                            <enum>Qt::Orientation::Vertical</enum>
-                           </property>
-                           <property name="sizeHint" stdset="0">
-                            <size>
-                             <width>20</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                          </spacer>
-                         </item>
-                        </layout>
+                         <property name="frameShadow">
+                          <enum>QFrame::Shadow::Raised</enum>
+                         </property>
+                         <layout class="QVBoxLayout" name="verticalLayout_25" stretch="8,1,1">
+                          <property name="spacing">
+                           <number>6</number>
+                          </property>
+                          <property name="sizeConstraint">
+                           <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+                          </property>
+                          <item>
+                           <widget class="QLabel" name="label_exp_window">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>0</width>
+                              <height>0</height>
+                             </size>
+                            </property>
+                            <property name="font">
+                             <font>
+                              <family>黑体</family>
+                              <pointsize>72</pointsize>
+                              <italic>false</italic>
+                              <bold>false</bold>
+                             </font>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">font: 72pt &quot;黑体&quot;;
+background-color: rgb(8, 8, 8)</string>
+                            </property>
+                            <property name="frameShape">
+                             <enum>QFrame::Shape::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                             <enum>QFrame::Shadow::Raised</enum>
+                            </property>
+                            <property name="text">
+                             <string>休息</string>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignmentFlag::AlignCenter</set>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <layout class="QHBoxLayout" name="horizontalLayout_23" stretch="0,1,1,0,3,0">
+                            <property name="sizeConstraint">
+                             <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
+                            </property>
+                            <item>
+                             <spacer name="horizontalSpacer_4">
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <widget class="QLabel" name="label_11">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="text">
+                               <string>实验轮次</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="QSpinBox" name="btn_exp_cnt">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>140</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="value">
+                               <number>10</number>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_5">
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                              <property name="sizeType">
+                               <enum>QSizePolicy::Policy::Fixed</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>30</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                            <item>
+                             <widget class="QPushButton" name="btn_start_exp">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>165</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>190</width>
+                                <height>16777215</height>
+                               </size>
+                              </property>
+                              <property name="text">
+                               <string>开始实验</string>
+                              </property>
+                             </widget>
+                            </item>
+                            <item>
+                             <spacer name="horizontalSpacer_6">
+                              <property name="orientation">
+                               <enum>Qt::Orientation::Horizontal</enum>
+                              </property>
+                              <property name="sizeHint" stdset="0">
+                               <size>
+                                <width>40</width>
+                                <height>20</height>
+                               </size>
+                              </property>
+                             </spacer>
+                            </item>
+                           </layout>
+                          </item>
+                          <item>
+                           <spacer name="verticalSpacer_6">
+                            <property name="orientation">
+                             <enum>Qt::Orientation::Vertical</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>20</width>
+                              <height>40</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </widget>
                        </item>
                       </layout>
                      </widget>
