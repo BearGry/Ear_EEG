@@ -1,9 +1,14 @@
 import asyncio
 import numpy as np
+import random
+import time
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
 from PySide6.QtCore import QThread, Signal, QObject
 
 from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread, EEGPlotter
+from .devices import ExperimentThread, TextToSpeechThread
+from .devices import SaveExpDataThread, SaveModelThread, EEGNet
+
 
 
 class Signals(QObject):
@@ -26,17 +31,85 @@ class Function:
         self.right_data = np.zeros((0))  # 右耳数据存储
         self.right_data_index = 0  # 右耳数据索引
 
-
         self.left_data_plotter = None  # 左耳绘图器
         self.right_data_plotter = None  # 右耳绘图器
+
+        self.exp_thread = None  # 实验线程
+        self.mark = [] # 实验标记
+        self.save_expdata_thread = None # 储存实验数据
+        self.model = None # 模型
+        self.train_and_save_model_thread = None # 训练模型
+
+        self.ACTION = {"闭眼": 0, "咬牙": 1, "左看": 2, "右看": 3}
 
 
     def start_experiment(self):
         '''
         开始实验按钮点击事件
-        
+        进行t轮实验，每轮4个动作，每个动作准备2秒，执行2秒，休息2秒
         '''
+        self.ui.btn_start_exp.setText("实验进行中...")
+        self.ui.btn_start_exp.setEnabled(False)
 
+        self._reset_data()
+
+        TextToSpeechThread("实验即将开始，请做好准备").start()
+
+        epochs = self.ui.btn_exp_cnt.value()
+        self.exp_thread = ExperimentThread(epochs=epochs, actions=list(self.ACTION.keys()))
+        self.exp_thread.update_label_signal.connect(self._handle_update_label_signal)
+        self.exp_thread.action_signal.connect(self._handle_action_signal) 
+        self.exp_thread.exp_finished.connect(self._handle_exp_finished)
+        self.exp_thread.start()
+
+    def _reset_data(self):
+        self.left_data = np.zeros((0))  # 左耳数据存储
+        self.left_data_index = 0  # 左耳数据索引
+        self.right_data = np.zeros((0))  # 右耳数据存储
+        self.right_data_index = 0  # 右耳数据索引
+
+    def _handle_update_label_signal(self, text, idx):
+        speak = ["准备", "开始", "休息"]
+        self.ui.label_exp_window.setText(text)
+        TextToSpeechThread(speak[idx]).start()
+
+    def _handle_action_signal(self, action):
+        self.mark.append((self.left_data_index, self.right_data_index, self.ACTION[action]))
+   
+    def _handle_exp_finished(self):
+        exp_left_data = self.left_data.copy()
+        exp_right_data = self.right_data.copy()
+        exp_info={
+                "action_map": self.ACTION,
+                "left_data_length": len(exp_left_data),
+                "right_data_length": len(exp_right_data),
+                "left_sample_rate": 500,
+                "right_sample_rate": 500,
+                "mark": self.mark,
+            }
+        # 保存实验数据(可用于后续离线数据处理)
+        self.save_expdata_thread = SaveExpDataThread()
+        self.save_expdata_thread.save_exp_data(
+            exp_left_data=exp_left_data,
+            exp_right_data=exp_right_data,
+            exp_info=exp_info
+        )
+
+        # 在线的训练并保存模型（weight会替换）
+        self.model = EEGNet(final_feature_dim=len(self.ACTION))
+        self.train_and_save_model_thread = SaveModelThread()
+        self.train_and_save_model_thread.train_and_save_model(
+            exp_left_data=exp_left_data,
+            exp_right_data=exp_right_data,
+            exp_info=exp_info,
+            model=self.model,
+            model_type="EEGNet",
+            epochs=100
+        )
+
+        QMessageBox.information(self.ui.page3, "实验结束", "实验结束，感谢您的参与！")
+        self.ui.btn_start_exp.setText("开始实验")
+        self.ui.btn_start_exp.setEnabled(True)
 
 
     def connect_ble(self):
@@ -53,6 +126,7 @@ class Function:
         self.ble.device_info_signal.connect(self._handle_device_info_signal)
         self.connect_thread.start()
 
+
     def _handle_connect_result_signal(self, result):
         if result != "ok":
             # 连接失败的弹窗
@@ -64,6 +138,7 @@ class Function:
             # 连接按钮设置为不能再点击
             self.ui.btn_connect_ble.setEnabled(False)
             self.ui.btn_connect_ble.setText("已连接")
+
 
     def _handle_device_info_signal(self, info):
         '''
@@ -107,6 +182,7 @@ class Function:
         table = self.ui.table_ble_stats
         for row, (key, value) in enumerate(stats):
             table.setItem(row+1, 1, QTableWidgetItem(value))
+
 
     def get_message(self):
         '''
