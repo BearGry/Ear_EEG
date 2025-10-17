@@ -1,22 +1,34 @@
 import asyncio
 import numpy as np
 import random
+from scipy.signal import butter, filtfilt
 import time
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
 from PySide6.QtCore import QThread, Signal, QObject
 
 from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread, EEGPlotter
 from .devices import ExperimentThread, TextToSpeechThread
-from .devices import SaveExpDataThread, SaveModelThread, EEGNet
+from .devices import SaveExpDataThread, SaveModelThread, EEGNet, TestModelThread
+
 
 
 
 class Signals(QObject):
+    # 绘图相关信号
     left_plotter = Signal(list)  # 左耳数据绘图信号
     right_plotter = Signal(list)  # 右耳数据绘图信号
 
+    # 测试相关信号
+    test_signal = Signal() # 测试信号
 
 class Function:
+
+    @staticmethod
+    def band_pass_filter(data, axis, fs, fmin, fmax):
+        b, a = butter(2, [fmin * 2 / fs, fmax * 2 / fs], 'bandpass')
+        filtered_data = filtfilt(b, a, data, axis=axis)
+        return filtered_data
+
 
     def __init__(self, ui) -> None:
         self.ui = ui
@@ -39,8 +51,81 @@ class Function:
         self.save_expdata_thread = None # 储存实验数据
         self.model = None # 模型
         self.train_and_save_model_thread = None # 训练模型
+        self.test_model_thread = None # 测试模型线程
 
+        self.SAMPLE_RATE = 500  # 采样率
         self.ACTION = {"闭眼": 0, "咬牙": 1, "左看": 2, "右看": 3}
+
+
+    def test_model(self):
+        if self.model is None:
+            self.model = EEGNet(final_feature_dim=len(self.ACTION))
+        model_weight_path = 'E:/Desktop/Ear_EEG/exp_models/EEGNet/weight.pth'
+        try:
+            self.test_model_thread = TestModelThread(model=self.model, weight_path=model_weight_path)
+        except FileNotFoundError:
+            print("No existing model weights file found. Please train the model first.")
+            return QMessageBox.warning(self.ui.page3, "模型加载失败", "没有找到模型权重文件，请先训练模型！")
+        except RuntimeError as e:
+            print(f"Error loading model weights: {e}")
+            return QMessageBox.warning(self.ui.page3, "模型加载失败", f"加载模型权重时出错：{e}")
+        self.test_model_thread.model_result_signal.connect(self._handle_model_result_signal)
+
+        self.ui.btn_start_exp.setEnabled(False)
+        self.ui.btn_test_model.setEnabled(False)
+
+        self._reset_data()
+
+        TextToSpeechThread("测试即将开始，请做好准备").start()
+
+        epochs = self.ui.btn_exp_cnt.value()
+        if self.exp_thread is not None:
+            self.exp_thread.epochs = epochs
+            self.exp_thread.exp_finished.disconnect()
+        self.exp_thread = ExperimentThread(epochs=epochs, actions=list(self.ACTION.keys()))
+        self.exp_thread.update_label_signal.connect(self._handle_update_label_signal)
+        self.exp_thread.action_signal.connect(self._handle_action_signal)
+        self.exp_thread.exp_finished.connect(self._handle_test_finished)
+
+        self.signals.test_signal.connect(self._handle_test_signal)
+
+        self.exp_thread.start()
+
+    def _handle_model_result_signal(self, result):
+        print("模型输出结果:", result)
+        self.ui.close_eyes_prob.setValue(result[self.ACTION["闭眼"]]*100)
+        self.ui.grit_teeth_prob.setValue(result[self.ACTION["咬牙"]]*100)
+        self.ui.look_left_prob.setValue(result[self.ACTION["左看"]]*100)
+        self.ui.look_right_prob.setValue(result[self.ACTION["右看"]]*100)
+
+    def _handle_test_signal(self):
+        lb, rb, label = self.mark[-1]
+
+        left_data = self.band_pass_filter(self.left_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
+                            fmax=100)
+        right_data = self.band_pass_filter(self.right_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
+                                 fmax=100)
+        left_test_data = left_data[lb: lb + self.SAMPLE_RATE * 2]
+        right_test_data = right_data[rb: rb + self.SAMPLE_RATE * 2]
+
+        print(f'{lb}/{self.left_data_index}, {rb}/{self.right_data_index}')
+
+        self.test_model_thread.run(
+            left_test_data=left_test_data,
+            right_test_data=right_test_data,
+            label=label
+        )
+
+    def _handle_test_finished(self):
+        accurate_rate = self.test_model_thread.accurate_rate()
+        QMessageBox.information(self.ui.page3, "测试结束", f"测试结束，模型准确率: {accurate_rate*100:.2f} %")
+        self.ui.btn_start_exp.setEnabled(True)
+        self.ui.btn_test_model.setEnabled(True)
+
+        self.ui.close_eyes_prob.setValue(0)
+        self.ui.grit_teeth_prob.setValue(0)
+        self.ui.look_left_prob.setValue(0)
+        self.ui.look_right_prob.setValue(0)
 
 
     def start_experiment(self):
@@ -67,10 +152,18 @@ class Function:
         self.left_data_index = 0  # 左耳数据索引
         self.right_data = np.zeros((0))  # 右耳数据存储
         self.right_data_index = 0  # 右耳数据索引
+        self.mark = [] # 实验标记
 
     def _handle_update_label_signal(self, text, idx):
         speak = ["准备", "开始", "休息"]
         self.ui.label_exp_window.setText(text)
+        if idx == 0:
+            self.ui.close_eyes_prob.setValue(0)
+            self.ui.grit_teeth_prob.setValue(0)
+            self.ui.look_left_prob.setValue(0)
+            self.ui.look_right_prob.setValue(0)
+        if idx == 2: 
+            self.signals.test_signal.emit()
         TextToSpeechThread(speak[idx]).start()
 
     def _handle_action_signal(self, action):

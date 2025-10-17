@@ -145,14 +145,3 @@ class SaveModelThread(QThread):
 		plt.tight_layout()
 		plt.savefig("eegnet.png")
     	#plt.show()
-
-
-
-if __name__ == "__main__":
-    import json
-
-    model_save_path = '../exp_models/eegnet/explore.pth'
-    left_data = np.load('../exp_data/explore_2025_09_23_11_54_14_left.npy')
-    right_data = np.load('../exp_data/explore_2025_09_23_11_54_14_right.npy')
-    with open("../exp_data/explore_2025_09_23_11_54_14.json", 'r', encoding='utf-8') as load_f:
-        info = json.load(load_f)

@@ -25,12 +25,13 @@ class TextToSpeechThread(threading.Thread):
         """
         try:
             with GLOBAL_TTS_LOCK:  # 确保 TTS 引擎线程安全
-                print(f"线程 {self.name} 开始播报：{self.text}")
+                # print(f"线程 {self.name} 开始播报：{self.text}")
                 self.tts_engine.setProperty('rate', self.rate)
                 self.tts_engine.setProperty('volume', self.volume)
                 self.tts_engine.say(self.text)
                 self.tts_engine.runAndWait()
         except Exception as e:
-            print(f"线程 {self.name} 播报出错：{e}")
+            print(f"线程 {self.name}, 播报内容{self.text}, 播报出错：{e}")
         finally:
-            print(f"线程 {self.name} 播报完成")
+            # print(f"线程 {self.name} 播报完成")
+            pass

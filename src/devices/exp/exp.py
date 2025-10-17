@@ -27,10 +27,11 @@ class ExperimentThread(QThread):
                 # 执行阶段
                 self.update_label_signal.emit(f"执行: {actions[i]}", 1)
                 self.action_signal.emit(actions[i])
-                time.sleep(2)
+                time.sleep(3)
                 # 休息阶段
                 self.update_label_signal.emit("休息", 2)
                 time.sleep(2)
+
 
         print("实验结束")
         self.exp_finished.emit()

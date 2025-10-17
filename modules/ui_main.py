@@ -1235,19 +1235,19 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_18.addWidget(self.label_10)
 
-        self.progressBar = QProgressBar(self.page3_left_bar)
-        self.progressBar.setObjectName(u"progressBar")
+        self.close_eyes_prob = QProgressBar(self.page3_left_bar)
+        self.close_eyes_prob.setObjectName(u"close_eyes_prob")
         sizePolicy5 = QSizePolicy(QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Fixed)
         sizePolicy5.setHorizontalStretch(0)
         sizePolicy5.setVerticalStretch(0)
-        sizePolicy5.setHeightForWidth(self.progressBar.sizePolicy().hasHeightForWidth())
-        self.progressBar.setSizePolicy(sizePolicy5)
-        self.progressBar.setMinimumSize(QSize(255, 0))
-        self.progressBar.setMaximumSize(QSize(16777215, 16777215))
-        self.progressBar.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
-        self.progressBar.setValue(0)
+        sizePolicy5.setHeightForWidth(self.close_eyes_prob.sizePolicy().hasHeightForWidth())
+        self.close_eyes_prob.setSizePolicy(sizePolicy5)
+        self.close_eyes_prob.setMinimumSize(QSize(255, 0))
+        self.close_eyes_prob.setMaximumSize(QSize(16777215, 16777215))
+        self.close_eyes_prob.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.close_eyes_prob.setValue(0)
 
-        self.horizontalLayout_18.addWidget(self.progressBar)
+        self.horizontalLayout_18.addWidget(self.close_eyes_prob)
 
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_18)
@@ -1259,14 +1259,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_19.addWidget(self.label_7)
 
-        self.progressBar_3 = QProgressBar(self.page3_left_bar)
-        self.progressBar_3.setObjectName(u"progressBar_3")
-        sizePolicy5.setHeightForWidth(self.progressBar_3.sizePolicy().hasHeightForWidth())
-        self.progressBar_3.setSizePolicy(sizePolicy5)
-        self.progressBar_3.setMinimumSize(QSize(255, 0))
-        self.progressBar_3.setValue(0)
+        self.grit_teeth_prob = QProgressBar(self.page3_left_bar)
+        self.grit_teeth_prob.setObjectName(u"grit_teeth_prob")
+        sizePolicy5.setHeightForWidth(self.grit_teeth_prob.sizePolicy().hasHeightForWidth())
+        self.grit_teeth_prob.setSizePolicy(sizePolicy5)
+        self.grit_teeth_prob.setMinimumSize(QSize(255, 0))
+        self.grit_teeth_prob.setValue(0)
 
-        self.horizontalLayout_19.addWidget(self.progressBar_3)
+        self.horizontalLayout_19.addWidget(self.grit_teeth_prob)
 
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_19)
@@ -1278,14 +1278,14 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_20.addWidget(self.label_8)
 
-        self.progressBar_4 = QProgressBar(self.page3_left_bar)
-        self.progressBar_4.setObjectName(u"progressBar_4")
-        sizePolicy5.setHeightForWidth(self.progressBar_4.sizePolicy().hasHeightForWidth())
-        self.progressBar_4.setSizePolicy(sizePolicy5)
-        self.progressBar_4.setMinimumSize(QSize(255, 0))
-        self.progressBar_4.setValue(0)
+        self.look_left_prob = QProgressBar(self.page3_left_bar)
+        self.look_left_prob.setObjectName(u"look_left_prob")
+        sizePolicy5.setHeightForWidth(self.look_left_prob.sizePolicy().hasHeightForWidth())
+        self.look_left_prob.setSizePolicy(sizePolicy5)
+        self.look_left_prob.setMinimumSize(QSize(255, 0))
+        self.look_left_prob.setValue(0)
 
-        self.horizontalLayout_20.addWidget(self.progressBar_4)
+        self.horizontalLayout_20.addWidget(self.look_left_prob)
 
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_20)
@@ -1297,28 +1297,28 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_21.addWidget(self.label_9)
 
-        self.progressBar_5 = QProgressBar(self.page3_left_bar)
-        self.progressBar_5.setObjectName(u"progressBar_5")
-        sizePolicy5.setHeightForWidth(self.progressBar_5.sizePolicy().hasHeightForWidth())
-        self.progressBar_5.setSizePolicy(sizePolicy5)
-        self.progressBar_5.setMinimumSize(QSize(255, 0))
-        self.progressBar_5.setValue(0)
+        self.look_right_prob = QProgressBar(self.page3_left_bar)
+        self.look_right_prob.setObjectName(u"look_right_prob")
+        sizePolicy5.setHeightForWidth(self.look_right_prob.sizePolicy().hasHeightForWidth())
+        self.look_right_prob.setSizePolicy(sizePolicy5)
+        self.look_right_prob.setMinimumSize(QSize(255, 0))
+        self.look_right_prob.setValue(0)
 
-        self.horizontalLayout_21.addWidget(self.progressBar_5)
+        self.horizontalLayout_21.addWidget(self.look_right_prob)
 
 
         self.verticalLayout_24.addLayout(self.horizontalLayout_21)
 
-        self.pushButton_3 = QPushButton(self.page3_left_bar)
-        self.pushButton_3.setObjectName(u"pushButton_3")
+        self.btn_test_model = QPushButton(self.page3_left_bar)
+        self.btn_test_model.setObjectName(u"btn_test_model")
         sizePolicy6 = QSizePolicy(QSizePolicy.Policy.Maximum, QSizePolicy.Policy.Fixed)
         sizePolicy6.setHorizontalStretch(0)
         sizePolicy6.setVerticalStretch(0)
-        sizePolicy6.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy6)
-        self.pushButton_3.setMinimumSize(QSize(165, 0))
+        sizePolicy6.setHeightForWidth(self.btn_test_model.sizePolicy().hasHeightForWidth())
+        self.btn_test_model.setSizePolicy(sizePolicy6)
+        self.btn_test_model.setMinimumSize(QSize(165, 0))
 
-        self.verticalLayout_24.addWidget(self.pushButton_3, 0, Qt.AlignmentFlag.AlignHCenter)
+        self.verticalLayout_24.addWidget(self.btn_test_model, 0, Qt.AlignmentFlag.AlignHCenter)
 
         self.verticalLayout_24.setStretch(0, 3)
         self.verticalLayout_24.setStretch(1, 3)
@@ -1566,7 +1566,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2208,7 +2208,7 @@ class Ui_MainWindow(object):
         self.label_7.setText(QCoreApplication.translate("MainWindow", u"\u54ac\u7259", None))
         self.label_8.setText(QCoreApplication.translate("MainWindow", u"\u5de6\u770b", None))
         self.label_9.setText(QCoreApplication.translate("MainWindow", u"\u53f3\u770b", None))
-        self.pushButton_3.setText(QCoreApplication.translate("MainWindow", u"\u6d4b\u8bd5", None))
+        self.btn_test_model.setText(QCoreApplication.translate("MainWindow", u"\u6d4b\u8bd5", None))
         self.label_exp_window.setText(QCoreApplication.translate("MainWindow", u"\u4f11\u606f", None))
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u5b9e\u9a8c\u8f6e\u6b21", None))
         self.btn_start_exp.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u5b9e\u9a8c", None))
