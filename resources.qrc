@@ -253,6 +253,11 @@
     <file>images/icons/cil-x-circle.png</file>
     <file>images/icons/cil-zoom-in.png</file>
     <file>images/icons/cil-zoom-out.png</file>
+    <file>images/icons/cil-close_eye_move.png</file>
+    <file>images/icons/cil-grit_tooth_move.png</file>
+    <file>images/icons/cil-left_glance_move.png</file>
+    <file>images/icons/cil-right_glance_move.png</file>
+    <file>images/icons/cil-rest.png</file>
     <file>images/icons/icon_close.png</file>
     <file>images/icons/icon_maximize.png</file>
     <file>images/icons/icon_menu.png</file>

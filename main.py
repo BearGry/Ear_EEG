@@ -22,6 +22,7 @@ import platform
 # ///////////////////////////////////////////////////////////////
 from modules import *
 from widgets import *
+
 os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 
 # SET AS GLOBAL WIDGETS
@@ -29,6 +30,7 @@ os.environ["QT_FONT_DPI"] = "96" # FIX Problem for High DPI and Scale above 100%
 widgets = None
 
 class MainWindow(QMainWindow):
+    
     def __init__(self):
         QMainWindow.__init__(self)
 
@@ -38,6 +40,8 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
         global widgets
         widgets = self.ui
+
+        self.func = None
 
         # USE CUSTOM TITLE BAR | USE AS "False" FOR MAC OR LINUX
         # ///////////////////////////////////////////////////////////////
@@ -69,8 +73,9 @@ class MainWindow(QMainWindow):
         # LEFT MENUS
         widgets.btn_home.clicked.connect(self.buttonClick)
         widgets.btn_widgets.clicked.connect(self.buttonClick)
-        widgets.btn_new.clicked.connect(self.buttonClick)
-        widgets.btn_save.clicked.connect(self.buttonClick)
+        widgets.btn_page1.clicked.connect(self.buttonClick)
+        widgets.btn_page2.clicked.connect(self.buttonClick)
+        widgets.btn_page3.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -105,6 +110,22 @@ class MainWindow(QMainWindow):
         widgets.stackedWidget.setCurrentWidget(widgets.home)
         widgets.btn_home.setStyleSheet(UIFunctions.selectMenu(widgets.btn_home.styleSheet()))
 
+        self.__init__slots()
+
+    def __init__slots(self):
+        from src import Function
+        self.func = Function(self.ui)
+
+        # init page1 slots
+        self.ui.btn_connect_ble.clicked.connect(self.func.connect_ble)
+
+        # init page2 slots
+        self.ui.btn_get_message.clicked.connect(self.func.get_message)
+
+        # init page3 slots
+        self.ui.btn_start_exp.clicked.connect(self.func.start_experiment)
+        self.ui.btn_test_model.clicked.connect(self.func.test_model)
+        
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -127,13 +148,20 @@ class MainWindow(QMainWindow):
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet()))
 
         # SHOW NEW PAGE
-        if btnName == "btn_new":
-            widgets.stackedWidget.setCurrentWidget(widgets.new_page) # SET PAGE
+        if btnName == "btn_page1":
+            widgets.stackedWidget.setCurrentWidget(widgets.page1) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
-        if btnName == "btn_save":
-            print("Save BTN clicked!")
+        if btnName == "btn_page2":
+            widgets.stackedWidget.setCurrentWidget(widgets.page2) # SET PAGE
+            UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+
+        if btnName == "btn_page3":
+            widgets.stackedWidget.setCurrentWidget(widgets.page3) # SET PAGE
+            UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')
@@ -161,4 +189,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon("icon.ico"))
     window = MainWindow()
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
