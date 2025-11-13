@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="styleSheet">
    <property name="font">
     <font>
@@ -41,6 +44,27 @@ SET APP STYLESHEET - FULL STYLES HERE
 DARK THEME - DRACULA COLOR BASED
 
 ///////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+/*自己设置的*/
+#bgApp {	
+	border-radius: 10px;
+}
+#left_plot_window {	
+	border-radius: 10px;
+}
+#right_plot_window {	
+	border-radius: 10px;
+}
+#label_exp_window {	
+	border-radius: 10px;
+}
+QPushButton {
+    border-radius: 8px;
+}
+
+/*//////////////////////////////////////////////////////////////////////////////////////////////*/
+
 
 QWidget{
 	color: rgb(221, 221, 221);
@@ -1878,7 +1902,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <enum>QFrame::Shadow::Raised</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>2</number>
+                      <number>1</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -3467,12 +3491,22 @@ background-color: rgb(8, 8, 8)</string>
                               </property>
                               <item>
                                <property name="text">
+                                <string>Naoyun Pods BLE-0190</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>Naoyun Pods BLE-0108</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
                                 <string>Naoyun Pods BLE-3426</string>
                                </property>
                               </item>
                               <item>
                                <property name="text">
-                                <string>Naoyun Pods BLE-3392</string>
+                                <string>Naoyun Pods BLE-348C</string>
                                </property>
                               </item>
                               <item>

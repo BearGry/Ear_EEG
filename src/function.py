@@ -60,7 +60,7 @@ class Function:
     def test_model(self):
         if self.model is None:
             self.model = EEGNet(final_feature_dim=len(self.ACTION))
-        model_weight_path = 'E:/Desktop/Ear_EEG/exp_models/EEGNet/weight.pth'
+        model_weight_path = 'E:/Desktop/tjlearn/projects/Ear_EEG/exp_models/EEGNet/weight.pth'
         try:
             self.test_model_thread = TestModelThread(model=self.model, weight_path=model_weight_path)
         except FileNotFoundError:
@@ -104,7 +104,8 @@ class Function:
         left_data = self.band_pass_filter(self.left_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
                             fmax=100)
         right_data = self.band_pass_filter(self.right_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
-                                 fmax=100)
+                                 fmax=100)        
+
         left_test_data = left_data[lb: lb + self.SAMPLE_RATE * 2]
         right_test_data = right_data[rb: rb + self.SAMPLE_RATE * 2]
 

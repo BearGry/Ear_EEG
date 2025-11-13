@@ -207,3 +207,13 @@ class NotificationHandler:
         print(f"触控开关: {info['touch_control']}")
         print(f"自动播放停止: {info['auto_stop']}")
         print("================\n")
+
+
+if __name__ == "__main__":
+    async def main():
+        devices = await BleakScanner.discover()
+        for d in devices:
+            if d.name and "Naoyun Pods BLE-" in d.name:
+                print(d.name)
+
+    asyncio.run(main())

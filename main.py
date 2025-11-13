@@ -38,6 +38,7 @@ class MainWindow(QMainWindow):
         # ///////////////////////////////////////////////////////////////
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
+        self.resize(1300, 800)  # 这里是因为在designer中的大小显示的与实际不一致，所以在代码中加入这一行来设置窗口大小
         global widgets
         widgets = self.ui
 
