@@ -1122,6 +1122,7 @@ class Ui_MainWindow(object):
         self.btn_lowcut_set = QDoubleSpinBox(self.page2_left_part)
         self.btn_lowcut_set.setObjectName(u"btn_lowcut_set")
         self.btn_lowcut_set.setMinimumSize(QSize(0, 30))
+        self.btn_lowcut_set.setMaximum(150.000000000000000)
         self.btn_lowcut_set.setValue(0.500000000000000)
 
         self.horizontalLayout_10.addWidget(self.btn_lowcut_set)
@@ -1142,6 +1143,7 @@ class Ui_MainWindow(object):
         self.btn_highcut_set = QDoubleSpinBox(self.page2_left_part)
         self.btn_highcut_set.setObjectName(u"btn_highcut_set")
         self.btn_highcut_set.setMinimumSize(QSize(32, 30))
+        self.btn_highcut_set.setMaximum(150.000000000000000)
         self.btn_highcut_set.setValue(40.000000000000000)
 
         self.horizontalLayout_13.addWidget(self.btn_highcut_set)

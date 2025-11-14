@@ -1980,6 +1980,9 @@ background-repeat: no-repeat;</string>
                                 <height>30</height>
                                </size>
                               </property>
+                              <property name="maximum">
+                               <double>150.000000000000000</double>
+                              </property>
                               <property name="value">
                                <double>0.500000000000000</double>
                               </property>
@@ -2006,6 +2009,9 @@ background-repeat: no-repeat;</string>
                                 <width>32</width>
                                 <height>30</height>
                                </size>
+                              </property>
+                              <property name="maximum">
+                               <double>150.000000000000000</double>
                               </property>
                               <property name="value">
                                <double>40.000000000000000</double>
