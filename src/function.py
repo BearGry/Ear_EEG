@@ -101,10 +101,10 @@ class Function:
     def _handle_test_signal(self):
         lb, rb, label = self.mark[-1]
 
-        left_data = self.band_pass_filter(self.left_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
-                            fmax=100)
-        right_data = self.band_pass_filter(self.right_data, axis=0, fs=self.SAMPLE_RATE, fmin=0.05,
-                                 fmax=100)        
+        left_data = self.band_pass_filter(self.left_data, axis=0, fs=self.SAMPLE_RATE, fmin=1.0,
+                            fmax=45.0)
+        right_data = self.band_pass_filter(self.right_data, axis=0, fs=self.SAMPLE_RATE, fmin=1.0,
+                                 fmax=45.0)        
 
         left_test_data = left_data[lb: lb + self.SAMPLE_RATE * 2]
         right_test_data = right_data[rb: rb + self.SAMPLE_RATE * 2]

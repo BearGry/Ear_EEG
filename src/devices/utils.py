@@ -54,10 +54,10 @@ def load_and_preprocess_eegnet_data(left_data, right_data, info):
     twindow_sample = int(2 * sample_rate1)
     twindow_sample2 = int(2 * sample_rate2)
 
-    left_data = band_pass_filter(left_data, axis=0, fs=sample_rate1, fmin=0.05,
-                                 fmax=100)
-    right_data = band_pass_filter(right_data, axis=0, fs=sample_rate2, fmin=0.05,
-                                 fmax=100)
+    left_data = band_pass_filter(left_data, axis=0, fs=sample_rate1, fmin=1.0,
+                                 fmax=45.0)
+    right_data = band_pass_filter(right_data, axis=0, fs=sample_rate2, fmin=1.0,
+                                 fmax=45.0)
 
     X, X1, y = [], [], []
     for m in markers:
