@@ -1591,7 +1591,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -1828,6 +1828,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_8.setObjectName(u"horizontalLayout_8")
         self.horizontalLayout_8.setContentsMargins(0, -1, -1, -1)
         self.btn_select_ble = QComboBox(self.l_connect_ble)
+        self.btn_select_ble.addItem("")
         self.btn_select_ble.addItem("")
         self.btn_select_ble.addItem("")
         self.btn_select_ble.addItem("")
@@ -2168,7 +2169,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2308,10 +2309,11 @@ class Ui_MainWindow(object):
 
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u53ef\u8fde\u63a5\u8bbe\u5907", None))
         self.btn_select_ble.setItemText(0, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-0190", None))
-        self.btn_select_ble.setItemText(1, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-0108", None))
-        self.btn_select_ble.setItemText(2, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3426", None))
-        self.btn_select_ble.setItemText(3, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-348C", None))
-        self.btn_select_ble.setItemText(4, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3393", None))
+        self.btn_select_ble.setItemText(1, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3486", None))
+        self.btn_select_ble.setItemText(2, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-0108", None))
+        self.btn_select_ble.setItemText(3, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3426", None))
+        self.btn_select_ble.setItemText(4, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-348C", None))
+        self.btn_select_ble.setItemText(5, QCoreApplication.translate("MainWindow", u"Naoyun Pods BLE-3393", None))
 
         self.btn_connect_ble.setText(QCoreApplication.translate("MainWindow", u"\u8fde\u63a5\u8033\u673a", None))
         ___qtablewidgetitem24 = self.table_ble_stats.horizontalHeaderItem(0)

@@ -35,7 +35,7 @@ class TestModelThread(QThread):
         right_test_data = np.array(right_test_data).reshape(1, 1, -1)
 
         # 如果只用一只耳朵的数据测试模型，记得修改这一行
-        input_data = np.concatenate((left_test_data, left_test_data), axis=1)
+        input_data = np.concatenate((left_test_data, right_test_data), axis=1)
         input_tensor = torch.tensor(input_data, dtype=torch.float32)
         self.model.eval()
         with torch.no_grad():

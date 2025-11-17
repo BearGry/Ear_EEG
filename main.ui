@@ -1902,7 +1902,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <enum>QFrame::Shadow::Raised</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>1</number>
+                      <number>5</number>
                      </property>
                      <widget class="QWidget" name="home">
                       <property name="styleSheet">
@@ -2823,7 +2823,7 @@ background-color: rgb(8, 8, 8)</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>218</width>
+                                 <width>274</width>
                                  <height>218</height>
                                 </rect>
                                </property>
@@ -3498,6 +3498,11 @@ background-color: rgb(8, 8, 8)</string>
                               <item>
                                <property name="text">
                                 <string>Naoyun Pods BLE-0190</string>
+                               </property>
+                              </item>
+                              <item>
+                               <property name="text">
+                                <string>Naoyun Pods BLE-3486</string>
                                </property>
                               </item>
                               <item>

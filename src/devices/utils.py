@@ -77,7 +77,7 @@ def load_and_preprocess_eegnet_data(left_data, right_data, info):
     X1 = X1.reshape(-1, twindow_sample, 1)  # (实验轮数*分类数, 1000(窗口大小), 1(通道))
 
     # //NOTE 如果想只用一只耳朵的数据训练模型，只需要修改下面这一行和test_model.py中的对应行即可
-    X_train = np.concatenate((X, X),axis=2) # (实验轮数*分类数, 1000(窗口大小), 2(通道))
+    X_train = np.concatenate((X, X1),axis=2) # (实验轮数*分类数, 1000(窗口大小), 2(通道))
 
     x_subject = np.rollaxis(X_train, 2, 1).astype(np.float32) # as.(40, 2, 1000)
 
