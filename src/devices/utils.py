@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+import random
 
 import numpy as np
 from scipy.signal import butter, filtfilt
@@ -60,14 +61,19 @@ def load_and_preprocess_eegnet_data(left_data, right_data, info):
                                  fmax=45.0)
 
     X, X1, y = [], [], []
+
+    augament_rate = 20  # 数据增强倍数
+
     for m in markers:
-        start = m[0]
-        start1 = m[1]
-        end = start + twindow_sample
-        end1 = start1 + twindow_sample2
-        X.append(left_data[start:end])
-        X1.append(right_data[start1:end1])
-        y.append(m[2])
+        for i in range(augament_rate):
+            augament_time_offset = random.randint(-250, 0)  # 随机偏移量，单位为采样点
+            start = m[0] + augament_time_offset
+            start1 = m[1] + augament_time_offset
+            end = start + twindow_sample 
+            end1 = start1 + twindow_sample2
+            X.append(left_data[start:end])
+            X1.append(right_data[start1:end1])
+            y.append(m[2])
 
 
     X = np.stack(X)

@@ -8,9 +8,9 @@ if __name__ == "__main__":
 
 
     model_type = "EEGNet"
-    left_data = np.load('./exp_data/exp_2025_11_17_15_55_03_left.npy')
-    right_data = np.load('./exp_data/exp_2025_11_17_15_55_03_right.npy')
-    with open("./exp_data/exp_2025_11_17_15_55_03.json", 'r', encoding='utf-8') as load_f:
+    left_data = np.load('./exp_data/exp_2025_11_17_18_42_56_left.npy')
+    right_data = np.load('./exp_data/exp_2025_11_17_18_42_56_right.npy')
+    with open("./exp_data/exp_2025_11_17_18_42_56.json", 'r', encoding='utf-8') as load_f:
         info = json.load(load_f)
         model = EEGNet(final_feature_dim=len(info['action_map']))
         save_model_thread = SaveModelThread()
