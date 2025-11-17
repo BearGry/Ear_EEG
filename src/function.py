@@ -1,6 +1,7 @@
 import asyncio
 import numpy as np
 import random
+import torch
 from scipy.signal import butter, filtfilt
 import time
 from PySide6.QtWidgets import QMessageBox, QTableWidgetItem
@@ -9,6 +10,7 @@ from PySide6.QtCore import QThread, Signal, QObject
 from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread, EEGPlotter
 from .devices import ExperimentThread, TextToSpeechThread
 from .devices import SaveExpDataThread, SaveModelThread, EEGNet, TestModelThread
+from .devices import RealTimeTestModelThread
 
 
 
@@ -20,6 +22,7 @@ class Signals(QObject):
 
     # 测试相关信号
     test_signal = Signal() # 测试信号
+    real_time_test_signal = Signal(list) # 实时测试信号
 
 class Function:
 
@@ -56,9 +59,59 @@ class Function:
         self.SAMPLE_RATE = 500  # 采样率
         self.ACTION = {"闭眼": 0, "咬牙": 1, "左看": 2, "右看": 3}
 
+        self.real_time_test_model_thread = None # 实时测试模型线程
+
 
     def start_real_time_test(self):
-        QMessageBox.information(self.ui.page4, "实时测试", "实时测试功能开发中，敬请期待！")
+        if self.ui.btn_real_time_test.text() == "实时测试":
+            if self.model is None:
+                self.model = EEGNet(final_feature_dim=len(self.ACTION))
+            model_weight_path = 'E:/Desktop/tjlearn/projects/Ear_EEG/exp_models/EEGNet/weight.pth'
+            try:
+                self.real_time_test_model_thread = RealTimeTestModelThread(
+                    model=self.model, weight_path=model_weight_path)
+            except FileNotFoundError:
+                print("No existing model weights file found. Please train the model first.")
+                return QMessageBox.warning(self.ui.page4, "模型加载失败", "没有找到模型权重文件，请先训练模型！")
+            except RuntimeError as e:
+                print(f"Error loading model weights: {e}")
+                return QMessageBox.warning(self.ui.page4, "模型加载失败", f"加载模型权重时出错：{e}")
+            
+            self.real_time_test_model_thread.real_time_result_signal.connect(self._handle_real_time_result_signal)
+            self.signals.real_time_test_signal.connect(self._handle_real_time_test_signal)
+            self._reset_data()
+            self.ui.btn_real_time_test.setText("停止测试")
+        else:
+            self.signals.real_time_test_signal.disconnect()
+            self.real_time_test_model_thread.real_time_result_signal.disconnect()
+            self.real_time_test_model_thread = None
+            self.ui.btn_real_time_test.setText("实时测试")
+            self.ui.show_real_time_result.setText("休息")
+
+
+    def _handle_real_time_test_signal(self, indices):
+        lb, rb = indices
+
+        left_data = self.band_pass_filter(self.left_data, axis=0, fs=self.SAMPLE_RATE, fmin=1.0,
+                            fmax=45.0)
+        right_data = self.band_pass_filter(self.right_data, axis=0, fs=self.SAMPLE_RATE, fmin=1.0,
+                                 fmax=45.0)        
+
+        left_test_data = left_data[lb - self.SAMPLE_RATE * 2 : lb]
+        right_test_data = right_data[rb - self.SAMPLE_RATE * 2 : rb]
+
+        print(f'Real-time test at {lb}/{self.left_data_index}, {rb}/{self.right_data_index}')
+
+        self.real_time_test_model_thread.run(
+            left_test_data=left_test_data,
+            right_test_data=right_test_data,
+        )
+
+    def _handle_real_time_result_signal(self, result):
+        action_name = ["闭眼", "咬牙", "左看", "右看"]
+        predicted = torch.argmax(result).item()
+        # print(f"模型预测实时结果: {action_name[predicted]}, 原始输出: {result.numpy().tolist()}")
+        self.ui.show_real_time_result.setText(action_name[predicted])
 
 
     def test_model(self):
@@ -321,7 +374,9 @@ class Function:
             if self.left_data_index % 5000 == 0:
                 print(f"左耳数据长度: {self.left_data_index}")
             self.signals.left_plotter.emit(data["samples"])
-            
+            if self.left_data_index >= 3000 and self.left_data_index % 500 == 0:
+                self.signals.real_time_test_signal.emit([self.left_data_index, self.right_data_index])
+
         elif data["ear_side"] == "right":
             self.right_data = np.concatenate((self.right_data, np.array(data["samples"])))
             self.right_data_index += data["sample_count"]

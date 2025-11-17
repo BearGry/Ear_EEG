@@ -1464,6 +1464,18 @@ class Ui_MainWindow(object):
         self.btn_real_time_test = QPushButton(self.page4)
         self.btn_real_time_test.setObjectName(u"btn_real_time_test")
         self.btn_real_time_test.setGeometry(QRect(50, 320, 121, 51))
+        self.show_real_time_result = QLabel(self.page4)
+        self.show_real_time_result.setObjectName(u"show_real_time_result")
+        self.show_real_time_result.setGeometry(QRect(300, 50, 427, 334))
+        sizePolicy1.setHeightForWidth(self.show_real_time_result.sizePolicy().hasHeightForWidth())
+        self.show_real_time_result.setSizePolicy(sizePolicy1)
+        self.show_real_time_result.setMinimumSize(QSize(0, 0))
+        self.show_real_time_result.setFont(font7)
+        self.show_real_time_result.setStyleSheet(u"font: 72pt \"\u9ed1\u4f53\";\n"
+"background-color: rgb(8, 8, 8)")
+        self.show_real_time_result.setFrameShape(QFrame.Shape.StyledPanel)
+        self.show_real_time_result.setFrameShadow(QFrame.Shadow.Raised)
+        self.show_real_time_result.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.stackedWidget.addWidget(self.page4)
         self.widgets = QWidget()
         self.widgets.setObjectName(u"widgets")
@@ -1606,7 +1618,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2258,6 +2270,7 @@ class Ui_MainWindow(object):
         self.btn_start_exp.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u5b9e\u9a8c", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))
         self.btn_real_time_test.setText(QCoreApplication.translate("MainWindow", u"\u5b9e\u65f6\u6d4b\u8bd5", None))
+        self.show_real_time_result.setText(QCoreApplication.translate("MainWindow", u"\u4f11\u606f", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))

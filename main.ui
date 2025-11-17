@@ -2576,6 +2576,52 @@ background-color: rgb(8, 8, 8)</string>
                         <string>实时测试</string>
                        </property>
                       </widget>
+                      <widget class="QLabel" name="show_real_time_result">
+                       <property name="geometry">
+                        <rect>
+                         <x>300</x>
+                         <y>50</y>
+                         <width>427</width>
+                         <height>334</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>黑体</family>
+                         <pointsize>72</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 72pt &quot;黑体&quot;;
+background-color: rgb(8, 8, 8)</string>
+                       </property>
+                       <property name="frameShape">
+                        <enum>QFrame::Shape::StyledPanel</enum>
+                       </property>
+                       <property name="frameShadow">
+                        <enum>QFrame::Shadow::Raised</enum>
+                       </property>
+                       <property name="text">
+                        <string>休息</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
+                       </property>
+                      </widget>
                      </widget>
                      <widget class="QWidget" name="widgets">
                       <property name="styleSheet">
@@ -2872,7 +2918,7 @@ background-color: rgb(8, 8, 8)</string>
                                 <rect>
                                  <x>0</x>
                                  <y>0</y>
-                                 <width>274</width>
+                                 <width>218</width>
                                  <height>218</height>
                                 </rect>
                                </property>
