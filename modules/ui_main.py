@@ -751,6 +751,18 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_8.addWidget(self.btn_page3)
 
+        self.btn_page4 = QPushButton(self.topMenu)
+        self.btn_page4.setObjectName(u"btn_page4")
+        sizePolicy.setHeightForWidth(self.btn_page4.sizePolicy().hasHeightForWidth())
+        self.btn_page4.setSizePolicy(sizePolicy)
+        self.btn_page4.setMinimumSize(QSize(0, 45))
+        self.btn_page4.setFont(font1)
+        self.btn_page4.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+        self.btn_page4.setLayoutDirection(Qt.LayoutDirection.LeftToRight)
+        self.btn_page4.setStyleSheet(u"background-image: url(:/icons/images/icons/cil-cursor.png);")
+
+        self.verticalLayout_8.addWidget(self.btn_page4)
+
 
         self.verticalMenuLayout.addWidget(self.topMenu, 0, Qt.AlignmentFlag.AlignTop)
 
@@ -1448,7 +1460,10 @@ class Ui_MainWindow(object):
         self.page4.setObjectName(u"page4")
         self.label_4 = QLabel(self.page4)
         self.label_4.setObjectName(u"label_4")
-        self.label_4.setGeometry(QRect(150, 160, 54, 16))
+        self.label_4.setGeometry(QRect(50, 30, 54, 16))
+        self.btn_real_time_test = QPushButton(self.page4)
+        self.btn_real_time_test.setObjectName(u"btn_real_time_test")
+        self.btn_real_time_test.setGeometry(QRect(50, 320, 121, 51))
         self.stackedWidget.addWidget(self.page4)
         self.widgets = QWidget()
         self.widgets.setObjectName(u"widgets")
@@ -1591,7 +1606,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 218, 218))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 274, 218))
         self.scrollAreaWidgetContents.setStyleSheet(u" QScrollBar:vertical {\n"
 "	border: none;\n"
 "    background: rgb(52, 59, 72);\n"
@@ -2169,7 +2184,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -2185,6 +2200,7 @@ class Ui_MainWindow(object):
         self.btn_page1.setText(QCoreApplication.translate("MainWindow", u"New", None))
         self.btn_page2.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.btn_page3.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
+        self.btn_page4.setText(QCoreApplication.translate("MainWindow", u"Exit", None))
         self.toggleLeftBox.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
         self.extraLabel.setText(QCoreApplication.translate("MainWindow", u"Left Box", None))
 #if QT_CONFIG(tooltip)
@@ -2241,6 +2257,7 @@ class Ui_MainWindow(object):
         self.label_11.setText(QCoreApplication.translate("MainWindow", u"\u5b9e\u9a8c\u8f6e\u6b21", None))
         self.btn_start_exp.setText(QCoreApplication.translate("MainWindow", u"\u5f00\u59cb\u5b9e\u9a8c", None))
         self.label_4.setText(QCoreApplication.translate("MainWindow", u"page4", None))
+        self.btn_real_time_test.setText(QCoreApplication.translate("MainWindow", u"\u5b9e\u65f6\u6d4b\u8bd5", None))
         self.labelBoxBlenderInstalation.setText(QCoreApplication.translate("MainWindow", u"FILE BOX", None))
         self.lineEdit.setText("")
         self.lineEdit.setPlaceholderText(QCoreApplication.translate("MainWindow", u"Type here", None))

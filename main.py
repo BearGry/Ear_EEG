@@ -77,6 +77,7 @@ class MainWindow(QMainWindow):
         widgets.btn_page1.clicked.connect(self.buttonClick)
         widgets.btn_page2.clicked.connect(self.buttonClick)
         widgets.btn_page3.clicked.connect(self.buttonClick)
+        widgets.btn_page4.clicked.connect(self.buttonClick)
 
         # EXTRA LEFT BOX
         def openCloseLeftBox():
@@ -127,6 +128,8 @@ class MainWindow(QMainWindow):
         self.ui.btn_start_exp.clicked.connect(self.func.start_experiment)
         self.ui.btn_test_model.clicked.connect(self.func.test_model)
         
+        # init page4 slots
+        self.ui.btn_real_time_test.clicked.connect(self.func.start_real_time_test)
 
     # BUTTONS CLICK
     # Post here your functions for clicked buttons
@@ -163,6 +166,12 @@ class MainWindow(QMainWindow):
             widgets.stackedWidget.setCurrentWidget(widgets.page3) # SET PAGE
             UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
             btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+
+        if btnName == "btn_page4":
+            widgets.stackedWidget.setCurrentWidget(widgets.page4) # SET PAGE
+            UIFunctions.resetStyle(self, btnName) # RESET ANOTHERS BUTTONS SELECTED
+            btn.setStyleSheet(UIFunctions.selectMenu(btn.styleSheet())) # SELECT MENU
+
 
         # PRINT BTN NAME
         print(f'Button "{btnName}" pressed!')

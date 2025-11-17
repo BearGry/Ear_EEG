@@ -57,6 +57,10 @@ class Function:
         self.ACTION = {"闭眼": 0, "咬牙": 1, "左看": 2, "右看": 3}
 
 
+    def start_real_time_test(self):
+        QMessageBox.information(self.ui.page4, "实时测试", "实时测试功能开发中，敬请期待！")
+
+
     def test_model(self):
         if self.model is None:
             self.model = EEGNet(final_feature_dim=len(self.ACTION))
