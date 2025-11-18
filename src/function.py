@@ -10,7 +10,7 @@ from PySide6.QtCore import QThread, Signal, QObject
 from .devices import BluetoothDevice, BleConnectThread, BleGetMessageThread, EEGPlotter
 from .devices import ExperimentThread, TextToSpeechThread
 from .devices import SaveExpDataThread, SaveModelThread, EEGNet, TestModelThread
-from .devices import RealTimeTestModelThread
+from .devices import RealTimeTestModelThread, LSLStreamer
 
 
 
@@ -60,6 +60,8 @@ class Function:
         self.ACTION = {"闭眼": 0, "咬牙": 1, "左看": 2, "右看": 3}
 
         self.real_time_test_model_thread = None # 实时测试模型线程
+        
+        self.lsl_streamer = None # LSL流管理器
 
 
     def start_real_time_test(self):
@@ -112,7 +114,7 @@ class Function:
         predicted = torch.argmax(result).item()
         # print(f"模型预测实时结果: {action_name[predicted]}, 原始输出: {result.numpy().tolist()}")
         self.ui.show_real_time_result.setText(action_name[predicted])
-
+        
 
     def test_model(self):
         if self.model is None:
@@ -347,6 +349,14 @@ class Function:
         self.signals.left_plotter.connect(self.left_data_plotter.update_plot)
         self.signals.right_plotter.connect(self.right_data_plotter.update_plot)
 
+        # 初始化LSL流
+        self.lsl_streamer = LSLStreamer(sample_rate=self.SAMPLE_RATE)
+        if self.lsl_streamer.create_streams():
+            print("LSL流已成功创建")
+        else:
+            print("LSL流创建失败，将继续运行但不会发送LSL数据")
+            QMessageBox.warning(self.ui.page2, "LSL流创建失败", "LSL流创建失败，将继续运行但不会发送LSL数据")
+
         self.get_message_thread = BleGetMessageThread(self.ble)
         self.ble.data_received_signal.connect(self._handle_data_received)
         self.get_message_thread.start()
@@ -356,7 +366,7 @@ class Function:
 
     def _handle_data_received(self, data):
         '''
-        处理接收到的数据，存储到对应的变量中
+        处理接收到的数据，存储到对应的变量中，并推送到LSL流
         data: dict
         {
             "ear_side": ear_side,
@@ -376,6 +386,10 @@ class Function:
             self.signals.left_plotter.emit(data["samples"])
             if self.left_data_index >= 3000 and self.left_data_index % 1000 == 0:
                 self.signals.real_time_test_signal.emit([self.left_data_index, self.right_data_index])
+            
+            # 推送左耳数据到LSL流
+            if self.lsl_streamer is not None and self.lsl_streamer.is_connected():
+                self.lsl_streamer.push_left_chunk(data["samples"])
 
         elif data["ear_side"] == "right":
             self.right_data = np.concatenate((self.right_data, np.array(data["samples"])))
@@ -383,4 +397,35 @@ class Function:
             if self.right_data_index % 5000 == 0:
                 print(f"右耳数据长度: {self.right_data_index}")
             self.signals.right_plotter.emit(data["samples"])
+            
+            # 推送右耳数据到LSL流
+            if self.lsl_streamer is not None and self.lsl_streamer.is_connected():
+                self.lsl_streamer.push_right_chunk(data["samples"])
+
+    
+    def stop_get_message(self):
+        '''
+        停止接收数据，并关闭LSL流
+        '''
+        # 关闭LSL流
+        if self.lsl_streamer is not None:
+            self.lsl_streamer.close_streams()
+            self.lsl_streamer = None
+        
+        # 停止BLE数据接收线程
+        if self.get_message_thread is not None and self.get_message_thread.isRunning():
+            self.get_message_thread.quit()
+            self.get_message_thread.wait()
+        
+        # 断开数据接收信号
+        if self.ble is not None:
+            try:
+                self.ble.data_received_signal.disconnect()
+            except:
+                pass
+        
+        self.ui.btn_get_message.setEnabled(True)
+        self.ui.btn_get_message.setText("接收数据")
+        print("✓ 数据接收已停止，LSL流已关闭")
+        QMessageBox.information(self.ui.page1, "数据接收已停止", "数据接收已停止，LSL流已关闭")
 

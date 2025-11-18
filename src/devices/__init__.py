@@ -7,3 +7,4 @@ from .exp.train_model import SaveModelThread
 from .exp.models import EEGNet
 from .exp.test_model import TestModelThread
 from .real_time.test_model import RealTimeTestModelThread
+from .lsl import LSLStreamer
