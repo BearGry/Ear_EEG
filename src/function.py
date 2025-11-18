@@ -374,7 +374,7 @@ class Function:
             if self.left_data_index % 5000 == 0:
                 print(f"左耳数据长度: {self.left_data_index}")
             self.signals.left_plotter.emit(data["samples"])
-            if self.left_data_index >= 3000 and self.left_data_index % 500 == 0:
+            if self.left_data_index >= 3000 and self.left_data_index % 1000 == 0:
                 self.signals.real_time_test_signal.emit([self.left_data_index, self.right_data_index])
 
         elif data["ear_side"] == "right":

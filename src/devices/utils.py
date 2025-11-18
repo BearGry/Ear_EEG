@@ -62,11 +62,11 @@ def load_and_preprocess_eegnet_data(left_data, right_data, info):
 
     X, X1, y = [], [], []
 
-    augament_rate = 20  # 数据增强倍数
+    augament_rate = 40  # 数据增强倍数
 
     for m in markers:
         for i in range(augament_rate):
-            augament_time_offset = random.randint(-250, 0)  # 随机偏移量，单位为采样点
+            augament_time_offset = random.randint(-250, 250)  # 随机偏移量，单位为采样点
             start = m[0] + augament_time_offset
             start1 = m[1] + augament_time_offset
             end = start + twindow_sample 
