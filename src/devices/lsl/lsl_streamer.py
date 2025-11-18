@@ -137,9 +137,9 @@ class LSLStreamer:
                 elif not isinstance(samples, list):
                     samples = list(samples)
                 
-                # 将每个样本转换为[sample]格式后推送
-                for sample in samples:
-                    self.left_outlet.push_sample([float(sample)])
+                # 转换为 [[s1], [s2], ...] 格式后一次性推送
+                data = [[float(s)] for s in samples]
+                self.left_outlet.push_chunk(data)
         except Exception as e:
             print(f"推送左耳数据块失败: {str(e)}")
     
@@ -160,9 +160,9 @@ class LSLStreamer:
                 elif not isinstance(samples, list):
                     samples = list(samples)
                 
-                # 将每个样本转换为[sample]格式后推送
-                for sample in samples:
-                    self.right_outlet.push_sample([float(sample)])
+                # 转换为 [[s1], [s2], ...] 格式后一次性推送
+                data = [[float(s)] for s in samples]
+                self.right_outlet.push_chunk(data)
         except Exception as e:
             print(f"推送右耳数据块失败: {str(e)}")
     
